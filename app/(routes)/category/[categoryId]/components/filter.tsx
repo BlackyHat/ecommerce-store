@@ -2,13 +2,13 @@
 
 import Button from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Color, Size } from '@/types';
+import { Color, BodyType } from '@/types';
 import { useRouter, useSearchParams } from 'next/navigation';
 import qs from 'query-string';
 
 interface FilterProps {
   name: string;
-  data: (Size | Color)[];
+  data: (BodyType | Color)[];
   valueKey: string;
 }
 
@@ -48,7 +48,7 @@ const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
               )}
               onClick={() => onClick(filter.id)}
             >
-              {filter.name}
+              {'label' in filter ? filter.label : filter.name}
             </Button>
           </div>
         ))}

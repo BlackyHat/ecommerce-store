@@ -1,18 +1,18 @@
 'use client';
 import Button from '@/components/ui/button';
 import IconButton from '@/components/ui/icon-button';
-import { Color, Size } from '@/types';
+import { Color, BodyType } from '@/types';
 import { Dialog } from '@headlessui/react';
 import { Plus, X } from 'lucide-react';
 import React, { useState } from 'react';
 import Filter from './filter';
 
 interface MobileFiltersProps {
-  sizes: Size[];
+  bodyTypes: BodyType[];
   colors: Color[];
 }
 
-const MobileFilters: React.FC<MobileFiltersProps> = ({ sizes, colors }) => {
+const MobileFilters: React.FC<MobileFiltersProps> = ({ bodyTypes, colors }) => {
   const [open, setOpen] = useState(false);
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
@@ -34,7 +34,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ sizes, colors }) => {
               <IconButton icon={<X size={15} />} onClick={onClose} />
             </div>
             <div className="p-4">
-              <Filter name="Sizes" data={sizes} valueKey="sizeId" />
+              <Filter name="BodyTypes" data={bodyTypes} valueKey="bodyTypeId" />
               <Filter name="Colors" data={colors} valueKey="colorId" />
             </div>
           </Dialog.Panel>

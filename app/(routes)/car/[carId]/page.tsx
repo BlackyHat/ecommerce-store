@@ -5,15 +5,17 @@ import Info from '@/components/info';
 import ProductList from '@/components/product-list';
 import Container from '@/components/ui/container';
 
-interface ProductPageProps {
+interface CarPageProps {
   params: {
     productId: string;
   };
 }
 
-const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+const CarPage: React.FC<CarPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
+
   const categoryId = product.category.id;
+
   const suggestedProducts = await getProducts({
     categoryId,
   });
@@ -36,4 +38,4 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   );
 };
 
-export default ProductPage;
+export default CarPage;

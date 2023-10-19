@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Button from '@/components/ui/button';
-import { ShoppingBag } from 'lucide-react';
-import useCart from '@/hooks/use-cart';
+import { Button } from '@/components/ui/button';
+import { PlusCircle, LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const NavbarActions = () => {
@@ -12,7 +11,6 @@ const NavbarActions = () => {
     setIsMounted(true);
   }, []);
   const router = useRouter();
-  const cart = useCart();
 
   if (!isMounted) {
     return null;
@@ -21,13 +19,29 @@ const NavbarActions = () => {
   return (
     <div className="ml-auto flex items-center gap-x-4">
       <Button
-        onClick={() => router.push('/cart')}
-        className="flex items-center rounded-full bg-black px-4 py-2"
+        onClick={() => router.push('/new-car')}
+        variant="outline"
+        // className="flex items-center rounded-full bg-white border-solid border-2 border-black px-4 py-2"
       >
-        <ShoppingBag size={20} color="white" />
-        <span className="ml-2 text-sm font-medium text-white">
-          {cart.items.length}
+        <PlusCircle
+          // size={20}
+
+          className="text-black h-4 w-4"
+        />
+        <span className="ml-2 text-sm font-medium text-black ">
+          Sell your car
         </span>
+      </Button>
+      <Button
+        onClick={() => router.push('/sign-in')}
+        size="icon"
+        // className="flex items-center rounded-full bg-black px-4 py-2"
+      >
+        <LogIn
+          // size={20}
+          className="bg-black h-4 w-4"
+          color="white"
+        />
       </Button>
     </div>
   );
