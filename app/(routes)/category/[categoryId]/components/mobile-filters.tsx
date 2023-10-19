@@ -1,5 +1,5 @@
 'use client';
-import Button from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import IconButton from '@/components/ui/icon-button';
 import { Color, BodyType } from '@/types';
 import { Dialog } from '@headlessui/react';
