@@ -1,71 +1,82 @@
-'use client';
+'use client'
 
-import { Product } from '@/types';
-import Image from 'next/image';
-import { Expand, ShoppingCart } from 'lucide-react';
-import IconButton from '@/components/ui/icon-button';
-import Currency from '@/components/ui/currency';
-import { useRouter } from 'next/navigation';
-import { MouseEventHandler } from 'react';
-import usePreviewModal from '@/hooks/use-preview-modal';
-import useCart from '@/hooks/use-cart';
+import { MouseEventHandler } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+import IconButton from '@/components/ui/icon-button'
+import Currency from '@/components/ui/currency'
+
+import usePreviewModal from '@/hooks/use-preview-modal'
+import useCart from '@/hooks/use-cart'
+
+import { Product } from '@/types'
+
+import { Expand, ShoppingCart } from 'lucide-react'
 
 interface ProductCardProps {
-  data: Product;
+  data: Product
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const cart = useCart();
-  const previewModal = usePreviewModal();
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/product/${data?.id}`);
-  };
+  const cart = useCart()
+  const previewModal = usePreviewModal()
 
-  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-    previewModal.onOpen(data);
-  };
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-    cart.addItem(data);
-  };
+  const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
+    event.stopPropagation()
+    previewModal.onOpen(data)
+  }
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
+    event.stopPropagation()
+    cart.addItem(data)
+  }
+
   return (
-    <div
-      onClick={handleClick}
-      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
-    >
+    <div className="bg-white relative group cursor-pointer rounded-xl border p-3 space-y-4">
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image
-          alt="Image"
-          src={data?.images?.[0]?.url}
+          alt={data.name}
+          src={data.images?.[0]?.url}
           fill
           className="aspect-square object-cover rounded-md"
+          sizes="(max-width: 767px) 100vw, (min-width: 1280px) 33wv,  (min-width: 1280px) 29.px"
         />
+
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-          <div className="flex gap-x-6  justify-center">
+          <div className="flex gap-x-6 justify-center">
             <IconButton
               onClick={onPreview}
               icon={<Expand size={20} />}
-              className="text-grey-600"
+              className="text-grey-600 z-10"
             />
+
             <IconButton
               onClick={onAddToCart}
               icon={<ShoppingCart size={20} />}
-              className="text-grey-600"
+              className="text-grey-600 z-10"
             />
           </div>
         </div>
       </div>
-      <div className="">
+
+      <div>
         <p className="font-semi-bold text-lg">{data.name}</p>
+
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
-      <div className="flex items-center justify-between">
-        <Currency value={data?.price} />
-      </div>
-    </div>
-  );
-};
 
-export default ProductCard;
+      <div className="flex items-center justify-between">
+        <Currency value={data.price} />
+      </div>
+
+      <Link
+        className="absolute inset-0 !m-0"
+        href={`/car/${data.id}`}
+        aria-label={data.name}
+      />
+    </div>
+  )
+}
+
+export default ProductCard

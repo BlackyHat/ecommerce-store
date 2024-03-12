@@ -1,24 +1,24 @@
-import getProduct from '@/actions/get-product';
-import getProducts from '@/actions/get-products';
-import Gallery from '@/components/gallery';
-import Info from '@/components/info';
-import ProductList from '@/components/product-list';
-import Container from '@/components/ui/container';
+import Gallery from '@/components/gallery'
+import Info from '@/components/info'
+import ProductList from '@/components/product-list'
+import Container from '@/components/ui/container'
+
+import getProduct from '@/actions/get-product'
+import getProducts from '@/actions/get-products'
 
 interface CarPageProps {
   params: {
-    productId: string;
-  };
+    carId: string
+  }
 }
 
 const CarPage: React.FC<CarPageProps> = async ({ params }) => {
-  const product = await getProduct(params.productId);
-
-  const categoryId = product.category.id;
+  const product = await getProduct(params.carId)
+  const categoryId = product.category.id
 
   const suggestedProducts = await getProducts({
     categoryId,
-  });
+  })
 
   return (
     <div className="bg-white">
@@ -35,7 +35,7 @@ const CarPage: React.FC<CarPageProps> = async ({ params }) => {
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default CarPage;
+export default CarPage
