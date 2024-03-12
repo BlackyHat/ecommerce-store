@@ -1,23 +1,35 @@
-'use client';
+'use client'
 
-import { formSchema } from './validation/productSchema';
-import FormAdditionalInfo from './form-additional-info';
-import FormContactInfo from './form-contact-info';
-import FormMainInfo from './form-main-info';
-import Heading from '@/components/heading';
-import { AlertModal } from '@/components/modals/alert-modal';
+import { useState } from 'react'
+import { toast } from 'react-hot-toast'
+import { useForm, FormProvider } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { NumericFormat } from 'react-number-format'
+import { useParams, useRouter } from 'next/navigation'
+import axios from 'axios'
+import * as z from 'zod'
+
+import Heading from '@/components/heading'
+import { Button } from '@/components/ui/button'
+import { AlertModal } from '@/components/modals/alert-modal'
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import ImageUpload from '@/components/ui/image-upload';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Textarea } from '@/components/ui/textarea';
-import { zodResolver } from '@hookform/resolvers/zod';
+} from '@/components/ui/form'
+import ImageUpload from '@/components/ui/image-upload'
+import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
+
+import FormAdditionalInfo from './form-additional-info'
+import FormContactInfo from './form-contact-info'
+import FormMainInfo from './form-main-info'
+
+import { formSchema } from './validation/productSchema'
+
 import {
   BodyType,
   Category,
@@ -28,26 +40,18 @@ import {
   Model,
   Product,
   Region,
-} from '@/types';
-import axios from 'axios';
-import { Trash } from 'lucide-react';
-import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { NumericFormat } from 'react-number-format';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+} from '@/types'
+import { Trash } from 'lucide-react'
 
-type CarFormValues = z.infer<typeof formSchema>;
+type CarFormValues = z.infer<typeof formSchema>
 
 interface CarFormProps {
-  initialData: (Product & { images: Pick<Image, 'url'>[] }) | null;
-  categories: Category[];
-  bodyTypes: BodyType[];
-  makes: (Make & { models: Model[] })[];
-  colors: Color[];
-  regions: (Region & { cities: City[] })[];
+  initialData: (Product & { images: Pick<Image, 'url'>[] }) | null
+  categories: Category[]
+  bodyTypes: BodyType[]
+  makes: (Make & { models: Model[] })[]
+  colors: Color[]
+  regions: (Region & { cities: City[] })[]
 }
 
 const CarForm: React.FC<CarFormProps> = ({
@@ -58,10 +62,12 @@ const CarForm: React.FC<CarFormProps> = ({
   colors,
   regions,
 }) => {
-  const params = useParams();
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const params = useParams()
+  const router = useRouter()
+
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   const methods = useForm<CarFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData
@@ -106,49 +112,49 @@ const CarForm: React.FC<CarFormProps> = ({
           soundSystem: undefined,
           sportSeats: undefined,
         },
-  });
-  const title = initialData ? 'Edit product' : 'Create product';
-  const description = initialData ? 'Edit a product' : 'Add a product';
-  const toastMessage = initialData ? 'Product updated.' : 'Product created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  })
+  const title = initialData ? 'Edit product' : 'Create product'
+  const description = initialData ? 'Edit a product' : 'Add a product'
+  const toastMessage = initialData ? 'Product updated.' : 'Product created.'
+  const action = initialData ? 'Save changes' : 'Create'
 
   const onSubmit = async (data: CarFormValues) => {
     try {
-      setLoading(true);
+      setLoading(true)
       if (initialData) {
         await axios.patch(
           `/api/${params.storeId}/products/${params.productId}`,
           data
-        );
+        )
       } else {
-        await axios.post(`/api/${params.storeId}/products`, data);
+        await axios.post(`/api/${params.storeId}/products`, data)
       }
-      router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success(toastMessage);
+      router.refresh()
+      router.push(`/${params.storeId}/products`)
+      toast.success(toastMessage)
     } catch (error) {
-      toast.error('Something went wrong.');
+      toast.error('Something went wrong.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const onDelete = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       await axios.delete(
         `/api/stores/${params.storeId}/products/${params.productId}`
-      );
-      router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success('Product deleted.');
+      )
+      router.refresh()
+      router.push(`/${params.storeId}/products`)
+      toast.success('Product deleted.')
     } catch (error) {
-      toast.error('Something went wrong.');
+      toast.error('Something went wrong.')
     } finally {
-      setLoading(false);
-      setOpen(false);
+      setLoading(false)
+      setOpen(false)
     }
-  };
+  }
   return (
     <>
       <AlertModal
@@ -185,25 +191,23 @@ const CarForm: React.FC<CarFormProps> = ({
                 <FormControl>
                   <ImageUpload
                     disabled={loading}
-                    onTop={(url) => {
+                    onTop={url => {
                       const idx = field.value.findIndex(
-                        (element) => element.url === url
-                      );
+                        element => element.url === url
+                      )
                       if (idx !== -1) {
-                        const elementToMove = field.value.splice(idx, 1)[0];
-                        field.value.unshift(elementToMove);
-                        field.onChange([...field.value]);
+                        const elementToMove = field.value.splice(idx, 1)[0]
+                        field.value.unshift(elementToMove)
+                        field.onChange([...field.value])
                       }
                     }}
-                    onChange={(url) =>
-                      field.onChange([...field.value, { url }])
-                    }
-                    onRemove={(url) =>
+                    onChange={url => field.onChange([...field.value, { url }])}
+                    onRemove={url =>
                       field.onChange([
-                        ...field.value.filter((current) => current.url !== url),
+                        ...field.value.filter(current => current.url !== url),
                       ])
                     }
-                    value={field.value.map((image) => image.url)}
+                    value={field.value.map(image => image.url)}
                   />
                 </FormControl>
                 <FormMessage />
@@ -273,7 +277,7 @@ const CarForm: React.FC<CarFormProps> = ({
                       placeholder="Set a price"
                       customInput={Input}
                       value={field.value}
-                      onValueChange={(values) => field.onChange(values.value)}
+                      onValueChange={values => field.onChange(values.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -289,12 +293,13 @@ const CarForm: React.FC<CarFormProps> = ({
             className="ml-auto"
             type="submit"
             size="lg"
+            variant="outline"
           >
             {action}
           </Button>
         </form>
       </FormProvider>
     </>
-  );
-};
-export default CarForm;
+  )
+}
+export default CarForm

@@ -1,7 +1,7 @@
-import { Billboard as BillboardType } from '@/types';
+import { Billboard as BillboardType } from '@/types'
 
 interface BillboardProps {
-  data: BillboardType;
+  data: BillboardType & { name?: string }
 }
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
@@ -13,12 +13,12 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
           <p className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-md text-white backdrop-blur-sm">
-            {data.label}
+            {data.name || data.label}
           </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Billboard;
+export default Billboard
