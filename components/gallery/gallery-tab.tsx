@@ -1,10 +1,10 @@
-import { Image as ImageType } from '@/types';
-import { Tab } from '@headlessui/react';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { Image as ImageType } from '@/types'
+import { Tab } from '@headlessui/react'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 interface GalleryTabProps {
-  image: ImageType;
+  image: ImageType
 }
 
 const GalleryTab: React.FC<GalleryTabProps> = ({ image }) => {
@@ -14,10 +14,12 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ image }) => {
         <div>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounded-md">
             <Image
-              fill
-              src={image.url}
-              alt=""
               className="object-cover object-center"
+              src={image.url}
+              alt="Image"
+              loading="lazy"
+              fill
+              sizes="(max-width: 1279px) 150px, (min-width: 1280px) 130px"
             />
           </span>
           <span
@@ -29,7 +31,7 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ image }) => {
         </div>
       )}
     </Tab>
-  );
-};
+  )
+}
 
-export default GalleryTab;
+export default GalleryTab
