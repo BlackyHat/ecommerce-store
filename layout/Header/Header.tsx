@@ -4,7 +4,7 @@ import { MainNav, NavbarActions } from '@/components/base'
 
 import getCategories from '@/actions/get-categories'
 
-export const Header: React.FC = async () => {
+export const Header = async () => {
   const categories = await getCategories()
 
   return (

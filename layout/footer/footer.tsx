@@ -1,4 +1,4 @@
-export const Footer: React.FC = () => (
+export const Footer = () => (
   <footer className="border-t py-10">
     <div className="container">
       <p className="text-center text-xs text-black">
