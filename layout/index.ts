@@ -1,2 +1,2 @@
 export * from './Header'
-export * from './FooterNew'
+export * from './Footer'
