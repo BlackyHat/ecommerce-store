@@ -1,8 +1,8 @@
-import Billboard from '@/components/billboard'
+import Billboard from '@/components/base/Billboard/Billboard'
 import Container from '@/components/ui/container'
 import Filter from './components/filter'
 import NoResults from '@/components/ui/no-results'
-import ProductCard from '@/components/ui/product-card'
+import ProductCard from '@/components/ui/ProductCard/ProductCard'
 import MobileFilters from './components/mobile-filters'
 
 import getCategory from '@/actions/get-category'

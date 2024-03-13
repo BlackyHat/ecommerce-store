@@ -1,6 +1,6 @@
-import Gallery from '@/components/gallery'
-import Info from '@/components/info'
-import ProductList from '@/components/product-list'
+import Gallery from '@/components/base/Gallery/Gallery'
+import Info from '@/components/base/Info/Info'
+import ProductList from '@/components/base/ProductList/ProductList'
 import Container from '@/components/ui/container'
 
 import getProduct from '@/actions/get-product'

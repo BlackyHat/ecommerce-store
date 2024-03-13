@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import qs from 'query-string';
+import { useRouter, useSearchParams } from 'next/navigation'
+import qs from 'query-string'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button/Button'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
-import { Color, BodyType } from '@/types';
+import { Color, BodyType } from '@/types'
 
 interface FilterProps {
-  name: string;
-  data: (BodyType | Color)[];
-  valueKey: string;
+  name: string
+  data: (BodyType | Color)[]
+  valueKey: string
 }
 
 const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const selectedValue = searchParams.get(valueKey);
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const selectedValue = searchParams.get(valueKey)
 
   const onClick = (id: string) => {
-    const current = qs.parse(searchParams.toString());
-    const query = { ...current, [valueKey]: id };
+    const current = qs.parse(searchParams.toString())
+    const query = { ...current, [valueKey]: id }
 
     if (current[valueKey] === id) {
-      query[valueKey] = null;
+      query[valueKey] = null
     }
 
     const url = qs.stringifyUrl(
@@ -34,18 +34,18 @@ const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
         query,
       },
       { skipNull: true }
-    );
-    router.push(url);
-  };
+    )
+    router.push(url)
+  }
 
   return (
     <div className="mb-8">
       <h3 className="text-lg font-semibold">{name}</h3>
 
       <hr className="my-4" />
-      
+
       <div className="flex flex-wrap gap-2">
-        {data.map((filter) => (
+        {data.map(filter => (
           <div key={filter.id} className="flex items-center">
             <Button
               className={cn(
@@ -60,7 +60,7 @@ const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter

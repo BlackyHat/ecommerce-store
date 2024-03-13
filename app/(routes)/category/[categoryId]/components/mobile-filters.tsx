@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 
-import { Button } from '@/components/ui/button'
-import IconButton from '@/components/ui/icon-button'
+import { Button } from '@/components/ui/Button/Button'
+import IconButton from '@/components/ui/IconButton/IconButton'
 import Filter from './filter'
 
 import { Color, BodyType } from '@/types'

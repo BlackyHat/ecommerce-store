@@ -1,4 +1,4 @@
-import CarForm from '@/components/car-form'
+import CarForm from '@/components/base/car-form'
 
 import getRegions from '@/actions/get-regions'
 import getColors from '@/actions/get-colors'
