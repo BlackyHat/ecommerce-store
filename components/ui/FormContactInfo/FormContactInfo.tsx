@@ -1,18 +1,24 @@
-import Heading from '@/components/base/Heading/Heading'
+import React from 'react'
+import { useFormContext } from 'react-hook-form'
+import { PatternFormat } from 'react-number-format'
+
+import { Heading } from '@/components/base'
 import {
   FormField,
   FormLabel,
   FormControl,
   FormMessage,
   FormItem,
-} from '@/components/ui/Form/Form'
-import { Input } from '@/components/ui/Input/Input'
-import React from 'react'
-import { useFormContext } from 'react-hook-form'
-import { PatternFormat } from 'react-number-format'
+  Input,
+} from '@/components/ui'
 
-const FormContactInfo = ({ loading }: { loading: boolean }) => {
+import { FormContactInfoProps } from './types'
+
+export const FormContactInfo: React.FC<FormContactInfoProps> = ({
+  loading,
+}) => {
   const { control } = useFormContext()
+
   return (
     <>
       <Heading
@@ -48,4 +54,3 @@ const FormContactInfo = ({ loading }: { loading: boolean }) => {
     </>
   )
 }
-export default FormContactInfo

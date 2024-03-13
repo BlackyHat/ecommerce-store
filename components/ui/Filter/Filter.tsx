@@ -3,19 +3,13 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import qs from 'query-string'
 
-import { Button } from '@/components/ui/Button/Button'
+import { Button } from '@/components/ui'
 
 import { cn } from '@/lib/utils'
 
-import { Color, BodyType } from '@/types'
+import { FilterProps } from './types'
 
-interface FilterProps {
-  name: string
-  data: (BodyType | Color)[]
-  valueKey: string
-}
-
-const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
+export const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
   const searchParams = useSearchParams()
   const router = useRouter()
   const selectedValue = searchParams.get(valueKey)
@@ -62,5 +56,3 @@ const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
     </div>
   )
 }
-
-export default Filter

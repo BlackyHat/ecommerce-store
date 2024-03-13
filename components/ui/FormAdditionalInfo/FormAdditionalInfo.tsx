@@ -1,20 +1,26 @@
-import Heading from '@/components/base/Heading/Heading'
-import { Checkbox } from '@/components/ui/Checkbox/Checkbox'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { PatternFormat } from 'react-number-format'
+
+import { Heading } from '@/components/base'
 import {
+  Checkbox,
   FormField,
   FormLabel,
   FormControl,
   FormMessage,
   FormDescription,
   FormItem,
-} from '@/components/ui/Form/Form'
-import { Input } from '@/components/ui/Input/Input'
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { PatternFormat } from 'react-number-format'
+  Input,
+} from '@/components/ui'
 
-const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
+import { FormAdditionalInfoProps } from './types'
+
+export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
+  loading,
+}) => {
   const { control } = useForm()
+
   return (
     <>
       <Heading
@@ -47,6 +53,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="vinCode"
@@ -78,8 +85,10 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
+
               <div className="space-y-1 leading-none">
                 <FormLabel>Featured</FormLabel>
+
                 <FormDescription>
                   This product will appear on the home page.
                 </FormDescription>
@@ -87,6 +96,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="isArchived"
@@ -98,8 +108,10 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
+
               <div className="space-y-1 leading-none">
                 <FormLabel>Archived</FormLabel>
+
                 <FormDescription>
                   This product will not appear anywhere in the store.
                 </FormDescription>
@@ -107,6 +119,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="sportSeats"
@@ -118,8 +131,10 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
+
               <div className="space-y-1 leading-none">
                 <FormLabel>Sport seats</FormLabel>
+
                 <FormDescription>
                   Whether the car have sports seats.
                 </FormDescription>
@@ -127,6 +142,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="seatHeating"
@@ -147,6 +163,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="seatVentilation"
@@ -167,6 +184,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="navigationSystem"
@@ -187,6 +205,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="isofix"
@@ -207,6 +226,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="electricSeatAdjustment"
@@ -227,6 +247,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="electricSideMirrors"
@@ -247,6 +268,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="electricWindows"
@@ -267,6 +289,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="heatedSteeringWheel"
@@ -287,6 +310,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="androidAuto"
@@ -307,6 +331,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="soundSystem"
@@ -327,6 +352,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="airConditioner"
@@ -347,6 +373,7 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="isCrashed"
@@ -369,4 +396,3 @@ const FormAdditionalInfo = ({ loading }: { loading: boolean }) => {
     </>
   )
 }
-export default FormAdditionalInfo

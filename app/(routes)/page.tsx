@@ -1,5 +1,4 @@
-import Billboard from '@/components/base/Billboard/Billboard'
-import ProductList from '@/components/base/ProductList/ProductList'
+import { Billboard, ProductList } from '@/components/base'
 import Container from '@/components/ui/container'
 
 import getBillboard from '@/actions/get-billboard'
@@ -7,7 +6,7 @@ import getProducts from '@/actions/get-products'
 
 export const revalidate = 0
 
-const HomePage: React.FC = async () => {
+export default async function MainPage() {
   const products = await getProducts({ isFeatured: true })
   const billboard = await getBillboard('1659a89a-8825-4d8c-beec-75182696b99b')
 
@@ -23,5 +22,3 @@ const HomePage: React.FC = async () => {
     </Container>
   )
 }
-
-export default HomePage

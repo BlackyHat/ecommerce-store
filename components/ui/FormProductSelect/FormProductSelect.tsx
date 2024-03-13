@@ -1,35 +1,21 @@
-import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import SelectedItems from './selected-items'
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/Form/Form'
-import {
+  SelectedItems,
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/Select/Select'
+} from '@/components/ui'
 
-export interface FieldOptions {
-  name?: string
-  label?: string
-  id: string
-}
+import { FormProductSelectProps } from './types'
 
-interface FormProductSelectProps {
-  loading: boolean
-  fieldName: string
-  label: string
-  fieldOptions: (string | FieldOptions)[]
-}
-
-const FormProductSelect: React.FC<FormProductSelectProps> = ({
+export const FormProductSelect: React.FC<FormProductSelectProps> = ({
   fieldName,
   label,
   loading,
@@ -71,5 +57,3 @@ const FormProductSelect: React.FC<FormProductSelectProps> = ({
     />
   )
 }
-
-export default FormProductSelect

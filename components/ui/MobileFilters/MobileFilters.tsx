@@ -2,21 +2,16 @@
 
 import React, { useState } from 'react'
 import { Dialog } from '@headlessui/react'
-
-import { Button } from '@/components/ui/Button/Button'
-import IconButton from '@/components/ui/IconButton/IconButton'
-import Filter from './filter'
-
-import { Color, BodyType } from '@/types'
-
 import { Plus, X } from 'lucide-react'
 
-interface MobileFiltersProps {
-  bodyTypes: BodyType[]
-  colors: Color[]
-}
+import { Button, IconButton } from '@/components/ui'
+import Filter from '../Filter/Filter'
+import { MobileFiltersProps } from './types'
 
-const MobileFilters: React.FC<MobileFiltersProps> = ({ bodyTypes, colors }) => {
+export const MobileFilters: React.FC<MobileFiltersProps> = ({
+  bodyTypes,
+  colors,
+}) => {
   const [open, setOpen] = useState(false)
   const onOpen = () => setOpen(true)
   const onClose = () => setOpen(false)
@@ -52,5 +47,3 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ bodyTypes, colors }) => {
     </>
   )
 }
-
-export default MobileFilters

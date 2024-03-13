@@ -1,15 +1,9 @@
-import React from 'react'
+import { SelectItem } from '@/components/ui'
 
-import { SelectItem } from '@/components/ui/Select/Select'
+import { SelectedItemsProps } from './types'
 
-import { FieldOptions } from './form-product-select'
-
-interface SelectedItemsProps {
-  options: (string | FieldOptions)[]
-}
-
-const SelectedItems: React.FC<SelectedItemsProps> = ({ options }) => {
-  return options.map(option => {
+export const SelectedItems: React.FC<SelectedItemsProps> = ({ options }) =>
+  options.map(option => {
     if (typeof option === 'string') {
       return (
         <SelectItem
@@ -28,5 +22,3 @@ const SelectedItems: React.FC<SelectedItemsProps> = ({ options }) => {
       )
     }
   })
-}
-export default SelectedItems

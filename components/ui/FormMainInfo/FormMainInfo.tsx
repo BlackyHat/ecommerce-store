@@ -1,55 +1,43 @@
 'use client'
 
-import FormProductSelect from './ui/form-product-select'
-import Heading from '@/components/base/Heading/Heading'
+import { useEffect, useState } from 'react'
+import { useFormContext } from 'react-hook-form'
+import { NumericFormat } from 'react-number-format'
+
+import { Heading } from '@/components/base'
 import {
+  FormProductSelect,
   FormField,
   FormLabel,
   FormControl,
   FormMessage,
   FormItem,
-} from '@/components/ui/Form/Form'
-import { Input } from '@/components/ui/Input/Input'
-import {
+  Input,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/Select/Select'
+} from '@/components/ui'
+
+import { enumValues } from '@/utils/enumValues'
+
 import {
-  BodyType,
-  Category,
   City,
-  Color,
   FuelType,
   GearboxType,
   Headlights,
   InteriorMatherial,
-  Make,
   Model,
-  Region,
   SpareTire,
   TypeOfDriveOption,
 } from '@/types'
-import { enumValues } from '@/utils/enumValues'
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { useFormContext } from 'react-hook-form'
-import { NumericFormat } from 'react-number-format'
+
+import { ProductFormProps } from './types'
 
 const currentYear = new Date().getFullYear()
 
-interface ProductFormProps {
-  loading: boolean
-  categories: Category[]
-  bodyTypes: BodyType[]
-  makes: (Make & { models: Model[] })[]
-  colors: Color[]
-  regions: (Region & { cities: City[] })[]
-}
-
-const FormMainInfo: React.FC<ProductFormProps> = ({
+export const FormMainInfo: React.FC<ProductFormProps> = ({
   loading,
   categories,
   bodyTypes,
@@ -61,7 +49,9 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
 
   const [choosedModels, setChoosedModels] = useState<Model[]>([])
   const [choosedCity, setChoosedCity] = useState<City[]>([])
+
   const selectedMakeId = watch('makeId')
+
   useEffect(() => {
     if (selectedMakeId) {
       const [choosedMake] = makes.filter(({ id }) => id === selectedMakeId)
@@ -70,6 +60,7 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
   }, [selectedMakeId, makes])
 
   const selectedRegionId = watch('regionId')
+
   useEffect(() => {
     if (selectedRegionId) {
       const [choosedRegion] = regions.filter(
@@ -78,6 +69,7 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
       setChoosedCity(choosedRegion?.cities)
     }
   }, [selectedRegionId, regions])
+
   const years = (() => {
     const years = []
     for (let i = currentYear; i > currentYear - 100; i--) {
@@ -113,24 +105,28 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
             </FormItem>
           )}
         />
+
         <FormProductSelect
           fieldName="categoryId"
           loading={loading}
           label="Category"
           fieldOptions={categories}
         />
+
         <FormProductSelect
           fieldName="bodyTypeId"
           loading={loading}
           label="Body Type"
           fieldOptions={bodyTypes}
         />
+
         <FormProductSelect
           fieldName="makeId"
           loading={loading}
           label="Make"
           fieldOptions={makes}
         />
+
         <FormField
           control={control}
           name="modelId"
@@ -164,12 +160,14 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="year"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Year</FormLabel>
+
               <Select
                 disabled={loading}
                 onValueChange={field.onChange}
@@ -184,6 +182,7 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
                     />
                   </SelectTrigger>
                 </FormControl>
+
                 <SelectContent className="overflow-y-auto h-64">
                   {years.map(year => (
                     <SelectItem key={year} value={String(year)}>
@@ -224,6 +223,7 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
                     />
                   </SelectTrigger>
                 </FormControl>
+
                 <SelectContent className="overflow-y-auto h-64">
                   {choosedCity.length > 0 &&
                     choosedCity.map(({ id, name }) => (
@@ -237,6 +237,7 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
             </FormItem>
           )}
         />
+
         <FormField
           control={control}
           name="mileage"
@@ -269,36 +270,42 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
           label="Fuel Type"
           fieldOptions={enumValues(FuelType)}
         />
+
         <FormProductSelect
           fieldName="gearbox"
           loading={loading}
           label="Gearbox Type"
           fieldOptions={enumValues(GearboxType)}
         />
+
         <FormProductSelect
           fieldName="typeOfDrive"
           loading={loading}
           label="Type Of Drive"
           fieldOptions={enumValues(TypeOfDriveOption)}
         />
+
         <FormProductSelect
           fieldName="colorId"
           loading={loading}
           label="Color"
           fieldOptions={colors}
         />
+
         <FormProductSelect
           fieldName="headlights"
           loading={loading}
           label="Headlights"
           fieldOptions={enumValues(Headlights)}
         />
+
         <FormProductSelect
           fieldName="spareTire"
           loading={loading}
           label="SpareTire"
           fieldOptions={enumValues(SpareTire)}
         />
+        
         <FormProductSelect
           fieldName="interiorMatherial"
           loading={loading}
@@ -309,4 +316,3 @@ const FormMainInfo: React.FC<ProductFormProps> = ({
     </>
   )
 }
-export default FormMainInfo

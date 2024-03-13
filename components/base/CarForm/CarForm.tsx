@@ -8,53 +8,32 @@ import { NumericFormat } from 'react-number-format'
 import { useParams, useRouter } from 'next/navigation'
 import axios from 'axios'
 import * as z from 'zod'
+import { Trash } from 'lucide-react'
 
-import Heading from '@/components/base/Heading/Heading'
-import { Button } from '@/components/ui/Button/Button'
-import { AlertModal } from '@/components/base/AlertModal/AlertModal'
+import { Heading, AlertModal } from '@/components/base'
 import {
+  Button,
+  FormAdditionalInfo,
+  FormMainInfo,
+  FormContactInfo,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/Form/Form'
-import ImageUpload from '@/components/ui/ImageUpload/ImageUpload'
-import { Input } from '@/components/ui/Input/Input'
-import { Separator } from '@/components/ui/Separator/Separator'
-import { Textarea } from '@/components/ui/Textarea/Textarea'
+  ImageUpload,
+  Input,
+  Separator,
+  Textarea,
+} from '@/components/ui'
 
-import FormAdditionalInfo from './form-additional-info'
-import FormContactInfo from './form-contact-info'
-import FormMainInfo from './form-main-info'
+import { formSchema } from './schema'
 
-import { formSchema } from './validation/productSchema'
-
-import {
-  BodyType,
-  Category,
-  City,
-  Color,
-  Image,
-  Make,
-  Model,
-  Product,
-  Region,
-} from '@/types'
-import { Trash } from 'lucide-react'
+import { CarFormProps } from './types'
 
 type CarFormValues = z.infer<typeof formSchema>
 
-interface CarFormProps {
-  initialData: (Product & { images: Pick<Image, 'url'>[] }) | null
-  categories: Category[]
-  bodyTypes: BodyType[]
-  makes: (Make & { models: Model[] })[]
-  colors: Color[]
-  regions: (Region & { cities: City[] })[]
-}
-
-const CarForm: React.FC<CarFormProps> = ({
+export const CarForm: React.FC<CarFormProps> = ({
   initialData,
   categories,
   bodyTypes,
@@ -302,4 +281,3 @@ const CarForm: React.FC<CarFormProps> = ({
     </>
   )
 }
-export default CarForm
