@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
 import { Button, Modal } from '@/components/ui'
@@ -19,7 +21,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   if (!isMounted) {
     return null
   }
-  
+
   return (
     <Modal open={isOpen} onClose={onClose}>
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">

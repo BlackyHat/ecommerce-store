@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
+
 import ModalProvider from '@/providers/modal-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 
 import './globals.css'
 
-import Navbar from '@/components/base/Navbar/Navbar'
-import { Footer } from '@/layout'
+import { Header, Footer } from '@/layout'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -21,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={font.className}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
         <ModalProvider />
         <ToastProvider />
-        <Navbar />
-        {children}
-        <Footer />
       </body>
     </html>
   )

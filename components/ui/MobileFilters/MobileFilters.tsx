@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Plus, X } from 'lucide-react'
 
-import { Button, IconButton } from '@/components/ui'
-import Filter from '../Filter/Filter'
+import { Button, IconButton, Filter } from '@/components/ui'
+
 import { MobileFiltersProps } from './types'
 
 export const MobileFilters: React.FC<MobileFiltersProps> = ({
@@ -13,6 +13,7 @@ export const MobileFilters: React.FC<MobileFiltersProps> = ({
   colors,
 }) => {
   const [open, setOpen] = useState(false)
+  
   const onOpen = () => setOpen(true)
   const onClose = () => setOpen(false)
 

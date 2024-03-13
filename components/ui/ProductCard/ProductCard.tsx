@@ -8,12 +8,10 @@ import { Expand, ShoppingCart } from 'lucide-react'
 import { Currency, IconButton } from '@/components/ui'
 
 import usePreviewModal from '@/hooks/use-preview-modal'
-import useCart from '@/hooks/use-cart'
 
 import { ProductCardProps } from './types'
 
 export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const cart = useCart()
   const previewModal = usePreviewModal()
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
@@ -23,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation()
-    cart.addItem(data)
+    //remove this
   }
 
   return (

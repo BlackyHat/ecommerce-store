@@ -1,3 +1,5 @@
+'use client'
+
 import { useFormContext } from 'react-hook-form'
 
 import {
@@ -46,7 +48,7 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
               </SelectTrigger>
             </FormControl>
 
-            <SelectContent className="overflow-y-auto max-h-64">
+            <SelectContent className="overflow-y-auto max-h-64 z-10">
               <SelectedItems options={fieldOptions} />
             </SelectContent>
           </Select>

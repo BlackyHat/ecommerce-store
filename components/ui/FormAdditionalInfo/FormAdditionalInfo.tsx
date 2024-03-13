@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+
 import { useForm } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
 
