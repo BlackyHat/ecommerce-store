@@ -10,9 +10,10 @@ import axios from 'axios'
 import * as z from 'zod'
 import { Trash } from 'lucide-react'
 
-import { Heading, AlertModal } from '@/components/base'
 import {
+  AlertModal,
   Button,
+  Heading,
   FormAdditionalInfo,
   FormMainInfo,
   FormContactInfo,
@@ -92,6 +93,7 @@ export const CarForm: React.FC<CarFormProps> = ({
           sportSeats: undefined,
         },
   })
+
   const title = initialData ? 'Edit product' : 'Create product'
   const description = initialData ? 'Edit a product' : 'Add a product'
   const toastMessage = initialData ? 'Product updated.' : 'Product created.'
@@ -134,6 +136,7 @@ export const CarForm: React.FC<CarFormProps> = ({
       setOpen(false)
     }
   }
+
   return (
     <>
       <AlertModal
@@ -155,7 +158,9 @@ export const CarForm: React.FC<CarFormProps> = ({
           </Button>
         )}
       </div>
+
       <Separator />
+
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
@@ -193,6 +198,7 @@ export const CarForm: React.FC<CarFormProps> = ({
               </FormItem>
             )}
           />
+
           <FormMainInfo
             loading={loading}
             categories={categories}
@@ -203,11 +209,13 @@ export const CarForm: React.FC<CarFormProps> = ({
           />
 
           <Separator />
+
           <Heading
             title="Description of the car"
             description="Enter additional information about the car, operating conditions, general technical condition, etc"
             className="text-xl"
           />
+
           <div className="max-w-4xl mr-auto">
             <FormField
               control={methods.control}
@@ -229,14 +237,17 @@ export const CarForm: React.FC<CarFormProps> = ({
           </div>
 
           <Separator />
+
           <FormAdditionalInfo loading={loading} />
 
           <Separator />
+
           <Heading
             title="Cost of the car"
             description="Enter the price of the car"
             className="text-xl"
           />
+
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
             <FormField
               control={methods.control}
@@ -264,7 +275,9 @@ export const CarForm: React.FC<CarFormProps> = ({
               )}
             />
           </div>
+
           <Separator />
+
           <FormContactInfo loading={loading} />
 
           <Button

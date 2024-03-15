@@ -32,7 +32,6 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
-
           <Select
             disabled={loading}
             onValueChange={field.onChange}
@@ -48,11 +47,10 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
               </SelectTrigger>
             </FormControl>
 
-            <SelectContent className="overflow-y-auto max-h-64 z-10">
+            <SelectContent className="overflow-y-auto max-h-64 cursor-pointer">
               <SelectedItems options={fieldOptions} />
             </SelectContent>
           </Select>
-
           <FormMessage />
         </FormItem>
       )}

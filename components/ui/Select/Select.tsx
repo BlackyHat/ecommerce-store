@@ -1,10 +1,9 @@
 'use client'
 
-import * as React from 'react'
+import { cn } from '@/lib/utils'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
-
-import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 const Select = SelectPrimitive.Root
 
@@ -19,7 +18,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex h-10 z-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+      'flex h-10 w-full items-center capitalize justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
       className
     )}
     {...props}
@@ -30,7 +29,6 @@ const SelectTrigger = React.forwardRef<
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))
-
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 
 const SelectContent = React.forwardRef<
@@ -61,7 +59,6 @@ const SelectContent = React.forwardRef<
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 ))
-
 SelectContent.displayName = SelectPrimitive.Content.displayName
 
 const SelectLabel = React.forwardRef<
@@ -74,7 +71,6 @@ const SelectLabel = React.forwardRef<
     {...props}
   />
 ))
-
 SelectLabel.displayName = SelectPrimitive.Label.displayName
 
 const SelectItem = React.forwardRef<
@@ -98,7 +94,6 @@ const SelectItem = React.forwardRef<
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ))
-
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
 const SelectSeparator = React.forwardRef<
@@ -111,7 +106,6 @@ const SelectSeparator = React.forwardRef<
     {...props}
   />
 ))
-
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
 export {

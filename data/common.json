@@ -1,0 +1,9 @@
+{
+  "company": {
+    "name": "CARSHUB_UA"
+  },
+  "baseInfo": ["category", "body type", "make", "model", "color"],
+  "footer": {
+    "copyRights": "© 2024, Automotive store, Inc. All Rights reserved."
+  }
+}

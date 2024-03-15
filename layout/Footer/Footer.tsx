@@ -1,9 +1,13 @@
-export const Footer = () => (
-  <footer className="border-t py-10">
-    <div className="container">
-      <p className="text-center text-xs text-black">
-        &copy; 2024, Automotive store, Inc. All Rights reserved.
-      </p>
-    </div>
-  </footer>
-)
+import content from '@/data/common.json'
+
+export const Footer = () => {
+  return (
+    <footer className="border-t pt-12">
+      <div className="container">
+        <p className="text-center text-base text-black py-4">
+          {content.footer.copyRights}
+        </p>
+      </div>
+    </footer>
+  )
+}

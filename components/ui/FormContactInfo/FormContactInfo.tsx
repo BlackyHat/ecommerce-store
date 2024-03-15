@@ -3,8 +3,8 @@
 import { useFormContext } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
 
-import { Heading } from '@/components/base'
 import {
+  Heading,
   FormField,
   FormLabel,
   FormControl,

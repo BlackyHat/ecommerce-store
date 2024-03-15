@@ -14,9 +14,11 @@ export default async function MainPage() {
     <>
       <Hero data={heroData} />
 
-      <div className="flex flex-col gap-y-8 container">
-        <ProductList title="Featured Products" items={products} />
-      </div>
+      <section className="section">
+        <div className="flex flex-col gap-y-8 container">
+          <ProductList title="Featured Products" items={products} />
+        </div>
+      </section>
     </>
   )
 }

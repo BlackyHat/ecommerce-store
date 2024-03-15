@@ -6,10 +6,11 @@ import getMakes from '@/actions/get-makes'
 import getBodyTypes from '@/actions/get-body-types'
 import getCategories from '@/actions/get-categories'
 
-export const AddCar: React.FC = async () => {
+export const AddCar = async () => {
   const categories = await getCategories()
   const bodyTypes = await getBodyTypes()
   const makes = await getMakes()
+
   const colors = await getColors()
   const regions = await getRegions()
 

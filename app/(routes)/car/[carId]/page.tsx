@@ -9,10 +9,9 @@ export default async function CarPage({
   params: { carId: string }
 }) {
   const product = await getProduct(params.carId)
-  const categoryId = product.category.id
 
   const suggestedProducts = await getProducts({
-    categoryId,
+    categoryId: product.category.id,
   })
 
   return (

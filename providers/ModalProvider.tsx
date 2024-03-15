@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-import { PreviewModal } from '@/components/base'
+import { PreviewModal } from '@/components/ui'
 
-const ModalProvider = () => {
+export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -20,5 +20,3 @@ const ModalProvider = () => {
     </>
   )
 }
-
-export default ModalProvider

@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'
 
-import { Heading } from '@/components/base'
 import {
+  Heading,
   FormProductSelect,
   FormField,
   FormLabel,
