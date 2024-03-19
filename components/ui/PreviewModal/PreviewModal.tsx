@@ -1,7 +1,8 @@
 'use client'
 
-import { Modal } from '@/components/ui'
-import { Info, Gallery } from '@/components/base'
+import { Modal } from '@/components/ui/Modal'
+import { Gallery } from '@/components/base/Gallery'
+import { Info } from '@/components/base/Info'
 
 import usePreviewModal from '@/hooks/use-preview-modal'
 

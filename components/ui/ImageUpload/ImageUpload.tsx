@@ -6,8 +6,10 @@ import { CldUploadWidget } from 'next-cloudinary'
 import { ImagePlus, Trash, Zap } from 'lucide-react'
 
 import { Button } from '@/components/ui/Button/Button'
-import { ImageUploadProps } from './types'
 
+import content from '@/data/common.json'
+
+import { ImageUploadProps } from './types'
 
 export const ImageUpload: React.FC<ImageUploadProps> = ({
   disabled,
@@ -17,6 +19,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
   value,
 }) => {
   const [isMounted, setIsMounted] = useState(false)
+  const { uploadImages } = content.buttons
 
   useEffect(() => {
     setIsMounted(true)
@@ -85,7 +88,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
               onClick={onClick}
             >
               <ImagePlus className="h-4 w-4 mr-2" />
-              Upload an Image
+              {uploadImages.label}
             </Button>
           )
         }}

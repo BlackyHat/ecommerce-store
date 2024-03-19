@@ -12,7 +12,7 @@ export const Header = async () => {
   return (
     <header className="border-b py-4">
       <div className="container relative flex h-16 items-center">
-        <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+        <Link href="/" className="flex lg:ml-0 gap-x-2">
           <p className="font-bold text-xl">{content.company.name}</p>
         </Link>
 

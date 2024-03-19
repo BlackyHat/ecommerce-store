@@ -13,32 +13,31 @@ import {
   Input,
 } from '@/components/ui'
 
+import content from '@/data/car-form.json'
+
 import { FormContactInfoProps } from './types'
 
 export const FormContactInfo: React.FC<FormContactInfoProps> = ({
   loading,
 }) => {
   const { control } = useFormContext()
+  const { title, desc, input } = content.form.contactInfo
 
   return (
     <>
-      <Heading
-        title="Contact information"
-        description="Enter contact information"
-        className="text-xl"
-      />
+      <Heading title={title} description={desc} className="text-xl" />
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
         <FormField
           control={control}
-          name="phone"
+          name={input.name}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone</FormLabel>
+              <FormLabel>{input.label}</FormLabel>
               <FormControl>
                 <PatternFormat
-                  format="+38 (###) ###-##-##"
+                  format={input.format}
                   disabled={loading}
-                  placeholder="+38 (099) 123 45 67"
+                  placeholder={input.placeholder}
                   mask="_"
                   customInput={Input}
                   value={field.value}

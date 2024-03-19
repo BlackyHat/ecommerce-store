@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'
 
+import { FormSelectYear } from '../FormSelectYear'
+import { FormSelectNested } from '../FormSelectNested'
+
 import {
   Heading,
   FormProductSelect,
@@ -13,13 +16,9 @@ import {
   FormMessage,
   FormItem,
   Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
 } from '@/components/ui'
 
+import content from '@/data/car-form.json'
 import { enumValues } from '@/utils/enumValues'
 
 import {
@@ -35,8 +34,6 @@ import {
 
 import { ProductFormProps } from './types'
 
-const currentYear = new Date().getFullYear()
-
 export const FormMainInfo: React.FC<ProductFormProps> = ({
   loading,
   categories,
@@ -46,6 +43,8 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
   regions,
 }) => {
   const { register, watch, control } = useFormContext()
+  const { title, desc, inputs, selects } = content.form.mainInfo
+  const { userName, mileage } = inputs
 
   const [choosedModels, setChoosedModels] = useState<Model[]>([])
   const [choosedCity, setChoosedCity] = useState<City[]>([])
@@ -70,34 +69,66 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
     }
   }, [selectedRegionId, regions])
 
-  const years = (() => {
-    const years = []
-    for (let i = currentYear; i > currentYear - 100; i--) {
-      years.push(i)
+  const getOptions = (name: string) => {
+    if (name === 'categoryId') {
+      return categories
     }
-    return years
-  })()
+    if (name === 'bodyTypeId') {
+      return bodyTypes
+    }
+    if (name === 'makeId') {
+      return makes
+    }
+    if (name === 'modelId') {
+      return choosedModels
+    }
+    if (name === 'regionId') {
+      return regions
+    }
+    if (name === 'cityId') {
+      return choosedCity
+    }
+    if (name === 'fuel') {
+      return enumValues(FuelType)
+    }
+    if (name === 'gearbox') {
+      return enumValues(GearboxType)
+    }
+    if (name === 'typeOfDrive') {
+      return enumValues(TypeOfDriveOption)
+    }
+    if (name === 'colorId') {
+      return colors
+    }
+    if (name === 'headlights') {
+      return enumValues(Headlights)
+    }
+    if (name === 'spareTire') {
+      return enumValues(SpareTire)
+    }
+    if (name === 'interiorMatherial') {
+      return enumValues(InteriorMatherial)
+    }
+    return []
+  }
 
   return (
     <>
-      <Heading
-        title="Main information"
-        description="*The fields are mandatory"
-        className="text-xl"
-      />
+      <Heading title={title} description={desc} className="text-xl" />
+
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
         <FormField
           control={control}
-          name="name"
+          name={userName.name}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{userName.label}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Product name"
+                  placeholder={userName.placeholder}
                   disabled={loading}
                   onRemove={() => field.onChange('')}
-                  {...register('name')}
+                  {...register(userName.name)}
                   {...field}
                 />
               </FormControl>
@@ -106,154 +137,58 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
           )}
         />
 
-        <FormProductSelect
-          fieldName="categoryId"
-          loading={loading}
-          label="Category"
-          fieldOptions={categories}
-        />
-
-        <FormProductSelect
-          fieldName="bodyTypeId"
-          loading={loading}
-          label="Body Type"
-          fieldOptions={bodyTypes}
-        />
-
-        <FormProductSelect
-          fieldName="makeId"
-          loading={loading}
-          label="Make"
-          fieldOptions={makes}
-        />
-
-        <FormField
-          control={control}
-          name="modelId"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Model</FormLabel>
-              <Select
-                disabled={loading || !(choosedModels.length > 0)}
-                onValueChange={field.onChange}
-                value={field.value}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger {...register('modelId')}>
-                    <SelectValue
-                      defaultValue={field.value}
-                      placeholder="Select a Model"
-                    />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent className="overflow-y-auto max-h-64">
-                  {choosedModels.length > 0 &&
-                    choosedModels.map(({ id, label }) => (
-                      <SelectItem key={id} value={id}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {selects.map(select => {
+          if (select.name === 'year') {
+            return (
+              <FormSelectYear
+                key={select.id}
+                fieldName={select.name}
+                label={select.label}
+                placeholder={select.placeholder}
+                loading={loading}
+              />
+            )
+          } else if (!!select.nested) {
+            return (
+              <FormSelectNested
+                key={select.id}
+                fieldName={select.name}
+                loading={loading}
+                label={select.label}
+                placeholder={select.placeholder}
+                fieldOptions={getOptions(select.name)}
+              />
+            )
+          } else {
+            return (
+              <FormProductSelect
+                key={select.id}
+                fieldName={select.name}
+                loading={loading}
+                label={select.label}
+                placeholder={select.placeholder}
+                fieldOptions={getOptions(select.name)}
+              />
+            )
+          }
+        })}
 
         <FormField
           control={control}
-          name="year"
+          name={mileage.name}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Year</FormLabel>
-
-              <Select
-                disabled={loading}
-                onValueChange={field.onChange}
-                value={field.value ? String(field.value) : undefined}
-                defaultValue={field.value ? String(field.value) : undefined}
-              >
-                <FormControl>
-                  <SelectTrigger {...register('year')}>
-                    <SelectValue
-                      defaultValue={field.value}
-                      placeholder="Set a production year"
-                    />
-                  </SelectTrigger>
-                </FormControl>
-
-                <SelectContent className="overflow-y-auto h-64">
-                  {years.map(year => (
-                    <SelectItem key={year} value={String(year)}>
-                      {year}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormProductSelect
-          fieldName="regionId"
-          loading={loading}
-          label="Region"
-          fieldOptions={regions}
-        />
-
-        <FormField
-          control={control}
-          name="cityId"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>City</FormLabel>
-              <Select
-                disabled={loading || !(choosedCity.length > 0)}
-                onValueChange={field.onChange}
-                value={field.value}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger {...register('cityId')}>
-                    <SelectValue
-                      defaultValue={field.value}
-                      placeholder="Select a City"
-                    />
-                  </SelectTrigger>
-                </FormControl>
-
-                <SelectContent className="overflow-y-auto h-64">
-                  {choosedCity.length > 0 &&
-                    choosedCity.map(({ id, name }) => (
-                      <SelectItem key={id} value={id}>
-                        {name}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={control}
-          name="mileage"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Kilometers</FormLabel>
+              <FormLabel>{mileage.label}</FormLabel>
               <FormControl>
                 <NumericFormat
                   thousandSeparator={true}
                   allowNegative={false}
                   decimalScale={0}
-                  suffix={' ths km.'}
+                  suffix={mileage.suffix}
                   fixedDecimalScale={true}
                   valueIsNumericString={true}
                   disabled={loading}
-                  placeholder="Set a kilometers"
+                  placeholder={mileage.placeholder}
                   customInput={Input}
                   value={field.value}
                   onValueChange={values => field.onChange(values.value)}
@@ -262,55 +197,6 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
               <FormMessage />
             </FormItem>
           )}
-        />
-
-        <FormProductSelect
-          fieldName="fuel"
-          loading={loading}
-          label="Fuel Type"
-          fieldOptions={enumValues(FuelType)}
-        />
-
-        <FormProductSelect
-          fieldName="gearbox"
-          loading={loading}
-          label="Gearbox Type"
-          fieldOptions={enumValues(GearboxType)}
-        />
-
-        <FormProductSelect
-          fieldName="typeOfDrive"
-          loading={loading}
-          label="Type Of Drive"
-          fieldOptions={enumValues(TypeOfDriveOption)}
-        />
-
-        <FormProductSelect
-          fieldName="colorId"
-          loading={loading}
-          label="Color"
-          fieldOptions={colors}
-        />
-
-        <FormProductSelect
-          fieldName="headlights"
-          loading={loading}
-          label="Headlights"
-          fieldOptions={enumValues(Headlights)}
-        />
-
-        <FormProductSelect
-          fieldName="spareTire"
-          loading={loading}
-          label="SpareTire"
-          fieldOptions={enumValues(SpareTire)}
-        />
-        
-        <FormProductSelect
-          fieldName="interiorMatherial"
-          loading={loading}
-          label="Interior Matherial"
-          fieldOptions={enumValues(InteriorMatherial)}
         />
       </div>
     </>

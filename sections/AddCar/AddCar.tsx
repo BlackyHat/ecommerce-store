@@ -1,4 +1,4 @@
-import { CarForm } from '@/components/base'
+import { CarForm } from '@/components/base/CarForm'
 
 import getRegions from '@/actions/get-regions'
 import getColors from '@/actions/get-colors'
@@ -15,7 +15,7 @@ export const AddCar = async () => {
   const regions = await getRegions()
 
   return (
-    <section className="section !pt-0">
+    <section className="section">
       <div className="container space-y-4">
         <CarForm
           initialData={null}

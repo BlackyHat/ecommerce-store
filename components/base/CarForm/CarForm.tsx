@@ -2,12 +2,16 @@
 
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { useForm, FormProvider } from 'react-hook-form'
+import {
+  useForm,
+  FormProvider,
+  FieldValues,
+  SubmitHandler,
+} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { NumericFormat } from 'react-number-format'
 import { useParams, useRouter } from 'next/navigation'
 import axios from 'axios'
-import * as z from 'zod'
 import { Trash } from 'lucide-react'
 
 import {
@@ -28,11 +32,12 @@ import {
   Textarea,
 } from '@/components/ui'
 
+import content from '@/data/car-form.json'
+
 import { formSchema } from './schema'
 
 import { CarFormProps } from './types'
-
-type CarFormValues = z.infer<typeof formSchema>
+import { defaultValues } from './default'
 
 export const CarForm: React.FC<CarFormProps> = ({
   initialData,
@@ -42,64 +47,26 @@ export const CarForm: React.FC<CarFormProps> = ({
   colors,
   regions,
 }) => {
+  const { title, desc, popupMsg, form } = content
+  const { formName, uploadImages, submitBtn, carDesc, carPrice } = form
+
   const params = useParams()
   const router = useRouter()
 
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const methods = useForm<CarFormValues>({
+  const methods = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData
-      ? initialData
-      : {
-          name: undefined,
-          images: [],
-          price: undefined,
-          categoryId: undefined,
-          bodyTypeId: undefined,
-          makeId: undefined,
-          modelId: undefined,
-          colorId: undefined,
-          mileage: undefined,
-          year: undefined,
-          fuel: undefined,
-          gearbox: undefined,
-          typeOfDrive: undefined,
-          description: undefined,
-          regionId: undefined,
-          cityId: undefined,
-          isFeatured: false,
-          isArchived: false,
-          phone: undefined,
-
-          engineSize: undefined,
-          vinCode: undefined,
-          headlights: undefined,
-          spareTire: undefined,
-          interiorMatherial: undefined,
-          isCrashed: undefined,
-          airConditioner: undefined,
-          androidAuto: undefined,
-          heatedSteeringWheel: undefined,
-          electricWindows: undefined,
-          electricSideMirrors: undefined,
-          electricSeatAdjustment: undefined,
-          isofix: undefined,
-          navigationSystem: undefined,
-          seatVentilation: undefined,
-          seatHeating: undefined,
-          soundSystem: undefined,
-          sportSeats: undefined,
-        },
+    defaultValues: initialData ?? defaultValues,
   })
 
-  const title = initialData ? 'Edit product' : 'Create product'
-  const description = initialData ? 'Edit a product' : 'Add a product'
-  const toastMessage = initialData ? 'Product updated.' : 'Product created.'
-  const action = initialData ? 'Save changes' : 'Create'
+  const formTitle = initialData ? title.edit : title.create
+  const formDescription = initialData ? desc.edit : desc.create
+  const toastMessage = initialData ? popupMsg.edit : popupMsg.create
+  const buttonLabel = initialData ? submitBtn.edit : submitBtn.create
 
-  const onSubmit = async (data: CarFormValues) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     try {
       setLoading(true)
       if (initialData) {
@@ -114,7 +81,7 @@ export const CarForm: React.FC<CarFormProps> = ({
       router.push(`/${params.storeId}/products`)
       toast.success(toastMessage)
     } catch (error) {
-      toast.error('Something went wrong.')
+      toast.error(popupMsg.error)
     } finally {
       setLoading(false)
     }
@@ -128,9 +95,9 @@ export const CarForm: React.FC<CarFormProps> = ({
       )
       router.refresh()
       router.push(`/${params.storeId}/products`)
-      toast.success('Product deleted.')
+      toast.success(popupMsg.delete)
     } catch (error) {
-      toast.error('Something went wrong.')
+      toast.error(popupMsg.error)
     } finally {
       setLoading(false)
       setOpen(false)
@@ -146,7 +113,7 @@ export const CarForm: React.FC<CarFormProps> = ({
         loading={loading}
       />
       <div className="flex items-center justify-between">
-        <Heading title={title} description={description} />
+        <Heading title={formTitle} description={formDescription} />
         {initialData && (
           <Button
             disabled={loading}
@@ -163,21 +130,22 @@ export const CarForm: React.FC<CarFormProps> = ({
 
       <FormProvider {...methods}>
         <form
+          name={formName}
           onSubmit={methods.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
           <FormField
             control={methods.control}
-            name="images"
+            name={uploadImages.name}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images, add 2-3 photo</FormLabel>
+                <FormLabel>{uploadImages.label}</FormLabel>
                 <FormControl>
                   <ImageUpload
                     disabled={loading}
                     onTop={url => {
                       const idx = field.value.findIndex(
-                        element => element.url === url
+                        (element: { url: string }) => element.url === url
                       )
                       if (idx !== -1) {
                         const elementToMove = field.value.splice(idx, 1)[0]
@@ -188,10 +156,12 @@ export const CarForm: React.FC<CarFormProps> = ({
                     onChange={url => field.onChange([...field.value, { url }])}
                     onRemove={url =>
                       field.onChange([
-                        ...field.value.filter(current => current.url !== url),
+                        ...field.value.filter(
+                          (current: { url: string }) => current.url !== url
+                        ),
                       ])
                     }
-                    value={field.value.map(image => image.url)}
+                    value={field.value.map((image: { url: any }) => image.url)}
                   />
                 </FormControl>
                 <FormMessage />
@@ -211,21 +181,21 @@ export const CarForm: React.FC<CarFormProps> = ({
           <Separator />
 
           <Heading
-            title="Description of the car"
-            description="Enter additional information about the car, operating conditions, general technical condition, etc"
+            title={carDesc.heading.title}
+            description={carDesc.heading.desc}
             className="text-xl"
           />
 
           <div className="max-w-4xl mr-auto">
             <FormField
               control={methods.control}
-              name="description"
+              name={carDesc.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Car description</FormLabel>
+                  <FormLabel>{carDesc.label}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us a little bit about your car. Max 2000 symbols"
+                      placeholder={carDesc.placeholder}
                       className="resize-none h-[240px]"
                       {...field}
                     />
@@ -243,28 +213,28 @@ export const CarForm: React.FC<CarFormProps> = ({
           <Separator />
 
           <Heading
-            title="Cost of the car"
-            description="Enter the price of the car"
+            title={carPrice.heading.title}
+            description={carPrice.heading.desc}
             className="text-xl"
           />
 
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
             <FormField
               control={methods.control}
-              name="price"
+              name={carPrice.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>{carPrice.label}</FormLabel>
                   <FormControl>
                     <NumericFormat
                       thousandSeparator={true}
                       allowNegative={false}
                       decimalScale={0}
-                      suffix={' $'}
+                      suffix={carPrice.suffix}
                       fixedDecimalScale={true}
                       valueIsNumericString={true}
                       disabled={loading}
-                      placeholder="Set a price"
+                      placeholder={carPrice.placeholder}
                       customInput={Input}
                       value={field.value}
                       onValueChange={values => field.onChange(values.value)}
@@ -287,7 +257,7 @@ export const CarForm: React.FC<CarFormProps> = ({
             size="lg"
             variant="outline"
           >
-            {action}
+            {buttonLabel}
           </Button>
         </form>
       </FormProvider>

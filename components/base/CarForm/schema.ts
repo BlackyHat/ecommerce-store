@@ -1,4 +1,9 @@
-import { phonePattern, vinPattern } from '@/utils/constants/formPatterns';
+import { z } from 'zod'
+
+import { phonePattern, vinPattern } from '@/utils/constants/formPatterns'
+
+import content from '@/data/car-form.json'
+
 import {
   FuelType,
   GearboxType,
@@ -6,8 +11,33 @@ import {
   InteriorMatherial,
   SpareTire,
   TypeOfDriveOption,
-} from '@/types';
-import { z } from 'zod';
+} from '@/types'
+
+const { validation } = content.form
+const {
+  images,
+  name,
+  category,
+  bodyType,
+  make,
+  model,
+  year,
+  region,
+  city,
+  spareTire,
+  interiorMatherial,
+  headlights,
+  mileage,
+  fuel,
+  gearbox,
+  typeOfDrive,
+  color,
+  description,
+  engineSize,
+  vinCode,
+  phoneNumber,
+  price,
+} = validation
 
 export const formSchema = z.object({
   //main required information
@@ -15,41 +45,50 @@ export const formSchema = z.object({
   images: z
     .object({ url: z.string() })
     .array()
-    .refine((arr) => !!arr.length, {
-      message: 'Try to add some photos of the car.',
+    .refine(arr => !!arr.length, {
+      message: images.minLength.message,
     }),
-  name: z.string().min(6).max(36),
-  categoryId: z.string().min(1, {
-    message: 'Select one of the categories.',
-  }),
-  bodyTypeId: z.string().min(1, { message: 'Select one of the body types.' }),
-  makeId: z.string().min(1, { message: 'Select one of the makes.' }),
-  modelId: z.string().min(1, { message: 'Select one of the models.' }),
+  name: z
+    .string()
+    .trim()
+    .min(name.minLength.value, name.minLength.message)
+    .max(name.maxLength.value, name.maxLength.message),
+
+  categoryId: z
+    .string()
+    .min(category.minLength.value, category.minLength.message),
+
+  bodyTypeId: z
+    .string()
+    .min(bodyType.minLength.value, bodyType.minLength.message),
+
+  makeId: z.string().min(make.minLength.value, make.minLength.message),
+
+  modelId: z.string().min(model.minLength.value, model.minLength.message),
+
   year: z.coerce
     .number()
-    .min(1925, { message: 'Select the production year from the list.' })
-    .max(new Date().getFullYear()),
-  regionId: z.string().min(1, { message: 'Select one of the regions.' }),
-  cityId: z.string().min(1, { message: 'Select one of the cities.' }),
+    .min(year.minLength.value, year.minLength.message)
+    .max(new Date().getFullYear(), year.maxLength.message),
+
+  regionId: z.string().min(region.minLength.value, region.minLength.message),
+
+  cityId: z.string().min(city.minLength.value, city.minLength.message),
+
   spareTire: z
     .nativeEnum(SpareTire, {
-      errorMap: () => ({
-        message: 'Type of spare tire is required to choose one.',
-      }),
+      errorMap: () => spareTire,
     })
     .optional(),
+
   interiorMatherial: z
     .nativeEnum(InteriorMatherial, {
-      errorMap: () => ({
-        message: 'Type of interior matherials is required to choose one.',
-      }),
+      errorMap: () => interiorMatherial,
     })
     .optional(),
   headlights: z
     .nativeEnum(Headlights, {
-      errorMap: () => ({
-        message: 'Type of headlights is required to choose one.',
-      }),
+      errorMap: () => headlights,
     })
     .optional(),
 
@@ -57,25 +96,37 @@ export const formSchema = z.object({
 
   mileage: z.coerce
     .number()
-    .min(1)
-    .max(5000, { message: 'Enter the mileage in thousands of kilometers.' }),
+    .min(mileage.minLength.value, mileage.minLength.message)
+    .max(mileage.maxLength.value, mileage.maxLength.message),
+
   fuel: z.nativeEnum(FuelType, {
-    errorMap: () => ({ message: 'Fuel type is required to select one.' }),
+    errorMap: () => fuel,
   }),
+
   gearbox: z.nativeEnum(GearboxType, {
-    errorMap: () => ({ message: 'Gearbox type is required to select one.' }),
+    errorMap: () => gearbox,
   }),
+
   typeOfDrive: z.nativeEnum(TypeOfDriveOption, {
-    errorMap: () => ({ message: 'Type of drive is required to select one.' }),
+    errorMap: () => typeOfDrive,
   }),
-  colorId: z.string().min(1, { message: 'Select one of the colors set.' }),
-  description: z.string().min(12).max(2000),
-  engineSize: z.string().min(1).optional().nullable(),
+
+  colorId: z.string().min(color.minLength.value, color.minLength.message),
+
+  description: z.string()
+    .min(description.minLength.value, description.minLength.message)
+    .max(description.maxLength.value, description.maxLength.message)
+,
+
+  engineSize: z
+    .string()
+    .min(engineSize.minLength.value, engineSize.minLength.message)
+    .optional()
+    .nullable(),
+
   vinCode: z
     .string()
-    .refine((code) => vinPattern.test(code), {
-      message: 'Invalid VIN-code. Example: "1HGCM82633A123456"',
-    })
+    .refine(code => vinPattern.test(code), vinCode)
     .optional()
     .nullable(),
   isFeatured: z.boolean().default(false).optional(),
@@ -98,9 +149,8 @@ export const formSchema = z.object({
 
   price: z.coerce
     .number()
-    .min(1, { message: 'Need to set the price.' })
-    .max(10000000),
-  phone: z.string().refine((phone) => phonePattern.test(phone), {
-    message: 'Invalid phone number format. Example: "+38 (099) 123-45-67"',
-  }),
-});
+    .min(price.minLength.value, price.minLength.message)
+    .max(price.maxLength.value, price.maxLength.message),
+  
+  phone: z.string().refine(phone => phonePattern.test(phone), phoneNumber),
+})

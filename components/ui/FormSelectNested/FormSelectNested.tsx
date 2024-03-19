@@ -8,16 +8,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  SelectedItems,
+  SelectItem,
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui'
 
-import { FormProductSelectProps } from './types'
+import { FormSelectNestedProps } from './types'
 
-export const FormProductSelect: React.FC<FormProductSelectProps> = ({
+export const FormSelectNested: React.FC<FormSelectNestedProps> = ({
   fieldName,
   label,
   placeholder,
@@ -34,7 +34,7 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <Select
-            disabled={loading}
+            disabled={loading || !(fieldOptions.length > 0)}
             onValueChange={field.onChange}
             value={field.value}
             defaultValue={field.value}
@@ -47,9 +47,13 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
                 />
               </SelectTrigger>
             </FormControl>
-
-            <SelectContent className="overflow-y-auto max-h-64 cursor-pointer">
-              <SelectedItems options={fieldOptions} />
+            <SelectContent className="overflow-y-auto max-h-64">
+              {fieldOptions.length > 0 &&
+                fieldOptions.map(({ id, label }) => (
+                  <SelectItem key={id} value={id}>
+                    {label}
+                  </SelectItem>
+                ))}
             </SelectContent>
           </Select>
           <FormMessage />

@@ -8,23 +8,32 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  SelectedItems,
+  SelectItem,
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui'
 
-import { FormProductSelectProps } from './types'
+import { FormSelectYearProps } from './types'
 
-export const FormProductSelect: React.FC<FormProductSelectProps> = ({
+export const FormSelectYear: React.FC<FormSelectYearProps> = ({
   fieldName,
   label,
   placeholder,
   loading,
-  fieldOptions,
 }) => {
   const { register, control } = useFormContext()
+
+  const years = (() => {
+    const currentYear = new Date().getFullYear()
+
+    const years = []
+    for (let i = currentYear; i > currentYear - 100; i--) {
+      years.push(i)
+    }
+    return years
+  })()
 
   return (
     <FormField
@@ -36,20 +45,20 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
           <Select
             disabled={loading}
             onValueChange={field.onChange}
-            value={field.value}
             defaultValue={field.value}
           >
             <FormControl>
-              <SelectTrigger {...register(fieldName)}>
-                <SelectValue
-                  defaultValue={field.value}
-                  placeholder={placeholder}
-                />
+              <SelectTrigger>
+                <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
 
-            <SelectContent className="overflow-y-auto max-h-64 cursor-pointer">
-              <SelectedItems options={fieldOptions} />
+            <SelectContent className="overflow-y-auto h-64">
+              {years.map(year => (
+                <SelectItem key={year} value={String(year)}>
+                  {year}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           <FormMessage />

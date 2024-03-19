@@ -1,0 +1,368 @@
+{
+  "id": "carform",
+  "title": {
+    "create": "Create product",
+    "edit": "Edit product"
+  },
+  "desc": {
+    "create": "Add a product",
+    "edit": "Edit a product"
+  },
+  "popupMsg": {
+    "create": "Product created.",
+    "edit": "Product updated.",
+    "error": "Something went wrong.",
+    "delete": "Product deleted."
+  },
+  "buttonLabel": {
+    "create": "Create",
+    "edit": "Save changes"
+  },
+
+  "form": {
+    "formName": "carform",
+    "uploadImages": {
+      "label": "Images, add 2-3 photo",
+      "name": "images"
+    },
+    "mainInfo": {
+      "title": "Main information",
+      "desc": "*The fields are mandatory",
+      "inputs": {
+        "userName": {
+          "id": "mi01",
+          "label": "Name",
+          "name": "name",
+          "format": "+38 (###) ###-##-##",
+          "placeholder": "Product name"
+        },
+        "mileage": {
+          "id": "mi02",
+          "label": "Kilometers",
+          "name": "mileage",
+          "suffix": " ths km.",
+          "placeholder": "Set a kilometers"
+        }
+      },
+      "selects": [
+        {
+          "id": "ms01",
+          "label": "Category",
+          "name": "categoryId",
+          "placeholder": "Select a Category"
+        },
+        {
+          "id": "ms02",
+          "label": "Body Type",
+          "name": "bodyTypeId",
+          "placeholder": "Select a Body Type"
+        },
+        {
+          "id": "ms03",
+          "label": "Make",
+          "name": "makeId",
+          "placeholder": "Select a Make"
+        },
+        {
+          "id": "ms04",
+          "label": "Model",
+          "name": "modelId",
+          "placeholder": "Select a Model",
+          "nested": true
+        },
+        {
+          "id": "ms05",
+          "label": "Year",
+          "name": "year",
+          "placeholder": "Select a production year"
+        },
+        {
+          "id": "ms06",
+          "label": "Region",
+          "name": "regionId",
+          "placeholder": "Select a region"
+        },
+        {
+          "id": "ms07",
+          "label": "City",
+          "name": "cityId",
+          "placeholder": "Select a city",
+          "nested": true
+        },
+        {
+          "id": "ms08",
+          "label": "Fuel Type",
+          "name": "fuel",
+          "placeholder": "Select a Fuel Type"
+        },
+        {
+          "id": "ms09",
+          "label": "Gearbox Type",
+          "name": "gearbox",
+          "placeholder": "Select a Gearbox Type"
+        },
+        {
+          "id": "ms10",
+          "label": "Type Of Drive",
+          "name": "typeOfDrive",
+          "placeholder": "Select a Type Of Drive"
+        },
+        {
+          "id": "ms11",
+          "label": "Color",
+          "name": "colorId",
+          "placeholder": "Select a Color"
+        },
+        {
+          "id": "ms12",
+          "label": "Headlights",
+          "name": "headlights",
+          "placeholder": "Select a Headlights"
+        },
+        {
+          "id": "ms13",
+          "label": "SpareTire",
+          "name": "spareTire",
+          "placeholder": "Select a SpareTire"
+        },
+        {
+          "id": "ms14",
+          "label": "Interior Matherial",
+          "name": "interiorMatherial",
+          "placeholder": "Select a Interior Matherial"
+        }
+      ]
+    },
+    "contactInfo": {
+      "title": "Contact information",
+      "desc": "Enter contact information",
+      "input": {
+        "id": "ci01",
+        "label": "Phone",
+        "name": "phone",
+        "format": "+38 (###) ###-##-##",
+        "placeholder": "+38 (099) 123-45-67"
+      }
+    },
+    "additionalInfo": {
+      "title": "Additional info",
+      "desc": "Check some preset config of your car",
+      "inputs": {
+        "engine": {
+          "id": "ai01",
+          "label": "Engine Size",
+          "name": "engineSize",
+          "format": "%.% L",
+          "placeholder": "Set an engine size"
+        },
+        "vincode": {
+          "id": "ai02",
+          "label": "Vin Code",
+          "name": "vinCode",
+          "placeholder": "Vin-code"
+        }
+      },
+      "checkboxes": [
+        {
+          "id": "cb01",
+          "label": "Featured",
+          "name": "isFeatured",
+          "desc": "This product will appear on the home page."
+        },
+        {
+          "id": "cb02",
+          "label": "Archived",
+          "name": "isArchived",
+          "desc": "This product will not appear anywhere in the store."
+        },
+        {
+          "id": "cb03",
+          "label": "Sport seats",
+          "name": "sportSeats",
+          "desc": "Whether the car have sports seats."
+        },
+        {
+          "id": "cb04",
+          "label": "Seat Heating",
+          "name": "seatHeating",
+          "desc": "Whether the car have heated seats."
+        },
+        {
+          "id": "cb05",
+          "label": "Seat Ventilation",
+          "name": "seatVentilation",
+          "desc": "Whether the car has seat ventilation."
+        },
+        {
+          "id": "cb06",
+          "label": "Navigation System",
+          "name": "seatVentilation",
+          "desc": "Whether the car has navigation system."
+        },
+        {
+          "id": "cb07",
+          "label": "Isofix",
+          "name": "isofix",
+          "desc": "Whether the car has isofix system."
+        },
+        {
+          "id": "cb08",
+          "label": "Electric Side Mirrors",
+          "name": "electricSeatAdjustment",
+          "desc": "Whether the car has electric side mirrors."
+        },
+        {
+          "id": "cb09",
+          "label": "Electric Windows",
+          "name": "electricWindows",
+          "desc": "Whether the car has electric windows."
+        },
+        {
+          "id": "cb10",
+          "label": "Heated Steering Wheel",
+          "name": "heatedSteeringWheel",
+          "desc": "Whether the car has heated steering wheel."
+        },
+        {
+          "id": "cb11",
+          "label": "Android Auto",
+          "name": "androidAuto",
+          "de,sc": "Whether the car has android auto."
+        },
+        {
+          "id": "cb12",
+          "label": "Sound System",
+          "name": "soundSystem",
+          "desc": "Whether the car has sound system."
+        },
+        {
+          "id": "cb13",
+          "label": "Air Conditioner",
+          "name": "airConditioner",
+          "desc": "Whether the car has air conditioner."
+        },
+        {
+          "id": "cb14",
+          "label": "Isofix",
+          "name": "isCrashed",
+          "desc": "Is the car was damaged."
+        },
+        {
+          "id": "cb15",
+          "label": "Is Crashed",
+          "name": "isofix",
+          "desc": "Whether the car has isofix system."
+        }
+      ]
+    },
+
+    "carDesc": {
+      "heading": {
+        "title": "Description of the car",
+        "desc": "Enter additional information about the car, operating conditions, general technical condition, etc"
+      },
+      "label": "Car description",
+      "name": "description",
+      "placeholder": "Tell us a little bit about your car. Max 2000 symbols"
+    },
+    "carPrice": {
+      "heading": {
+        "title": "Cost of the car",
+        "desc": "Enter the price of the car"
+      },
+      "label": "Price",
+      "name": "price",
+      "placeholder": "Set a price",
+      "suffix": " $"
+    },
+    "submitBtn": { "create": "Create", "edit": "Save changes" },
+
+    "validation": {
+      "images": {
+        "minLength": {
+          "message": "Try to add some photos of the car."
+        }
+      },
+      "name": {
+        "minLength": { "value": 2, "message": "Min length 2 symbols." },
+        "maxLength": { "value": 36, "message": "Max length 36 symbols." }
+      },
+      "category": {
+        "minLength": { "value": 1, "message": "Select one of the categories." }
+      },
+      "bodyType": {
+        "minLength": { "value": 1, "message": "Select one of the body types." }
+      },
+      "make": {
+        "minLength": { "value": 1, "message": "Select one of the makes." }
+      },
+      "model": {
+        "minLength": { "value": 1, "message": "Select one of the models." }
+      },
+      "year": {
+        "minLength": {
+          "value": 1925,
+          "message": "Select the production year from the list."
+        },
+        "maxLength": {
+          "message": "Production year can not be nigger current year."
+        }
+      },
+      "region": {
+        "minLength": { "value": 1, "message": "Select one of the regions." }
+      },
+      "city": {
+        "minLength": { "value": 1, "message": "Select one of the cities." }
+      },
+      "spareTire": {
+        "message": "Type of spare tire is required to choose one."
+      },
+      "interiorMatherial": {
+        "message": "Type of interior matherials is required to choose one."
+      },
+      "headlights": {
+        "message": "Type of headlights is required to choose one."
+      },
+      "mileage": {
+        "minLength": { "value": 1, "message": "Please set the mileage." },
+        "maxLength": {
+          "value": 5000,
+          "message": "Enter the mileage in thousands of kilometers."
+        }
+      },
+      "fuel": {
+        "message": "Fuel type is required to select one."
+      },
+      "gearbox": {
+        "message": "Gearbox type is required to select one."
+      },
+      "typeOfDrive": {
+        "message": "Type of drive is required to select one."
+      },
+      "color": {
+        "minLength": { "value": 1, "message": "Select one of the colors set." }
+      },
+      "description": {
+        "minLength": { "value": 12, "message": "Min length 12 symbols." },
+        "maxLength": {
+          "value": 2000,
+          "message": "Max length 2000 symbols."
+        }
+      },
+      "engineSize": {
+        "minLength": { "value": 1, "message": "Enter the engine size." }
+      },
+      "vinCode": {
+        "message": "Invalid VIN-code. Example: '1HGCM82633A123456'"
+      },
+
+      "phoneNumber": {
+        "message": "Invalid phone number format. Example: '+38 (099) 123-45-67'"
+      },
+      "price": {
+        "minLength": { "value": 1, "message": "The price is required." },
+        "maxLength": { "value": 10000000, "message": "The price is too big." }
+      }
+    }
+  }
+}
