@@ -25,10 +25,20 @@
       "label": "Images, add 2-3 photo",
       "name": "images"
     },
+    "contactInfo": {
+      "title": "Contact information",
+      "desc": "Enter contact information",
+      "input": {
+        "id": "ci01",
+        "label": "Phone",
+        "name": "phone",
+        "format": "+38 (###) ###-##-##",
+        "placeholder": "+38 (099) 123-45-67"
+      }
+    },
     "additionalInfo": {
       "title": "Additional info",
       "desc": "Check some preset config of your car",
-
       "checkboxes": [
         {
           "id": "cb01",
