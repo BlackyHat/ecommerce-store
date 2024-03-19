@@ -8,9 +8,11 @@
   },
   "buttons": {
     "uploadImages": { "label": "Upload an Image" },
-    "sellCar": { "label": "Sell your car" },
-    "favotire": { "label": "Add To Favotite" }
+    "sellCar": { "label": "Sell your car" }
   },
   "popup": { "alertModal": { "cancel": "Cancel", "continue": "Continue" } },
-  "infoSection": { "category": "Category" }
+  "infoSection": {
+    "button": { "label": "Add To Favotite" },
+    "props": ["Category", "Body Type", "Make", "Model", "Color"]
+  }
 }
