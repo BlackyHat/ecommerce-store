@@ -1,0 +1,281 @@
+{
+  "id": "carform",
+  "title": {
+    "create": "Create product",
+    "edit": "Edit product"
+  },
+  "desc": {
+    "create": "Add a product",
+    "edit": "Edit a product"
+  },
+  "popupMsg": {
+    "create": "Product created.",
+    "edit": "Product updated.",
+    "error": "Something went wrong.",
+    "delete": "Product deleted."
+  },
+  "buttonLabel": {
+    "create": "Create",
+    "edit": "Save changes"
+  },
+
+  "form": {
+    "formName": "carform",
+    "uploadImages": {
+      "label": "Images, add 2-3 photo",
+      "name": "images"
+    },
+    "additionalInfo": {
+      "title": "Additional info",
+      "desc": "Check some preset config of your car",
+
+      "checkboxes": [
+        {
+          "id": "cb01",
+          "label": "Featured",
+          "name": "isFeatured",
+          "desc": "This product will appear on the home page."
+        },
+        {
+          "id": "cb02",
+          "label": "Archived",
+          "name": "isArchived",
+          "desc": "This product will not appear anywhere in the store."
+        },
+        {
+          "id": "cb03",
+          "label": "Sport seats",
+          "name": "sportSeats",
+          "desc": "Whether the car have sports seats."
+        },
+        {
+          "id": "cb04",
+          "label": "Seat Heating",
+          "name": "seatHeating",
+          "desc": "Whether the car have heated seats."
+        },
+        {
+          "id": "cb05",
+          "label": "Seat Ventilation",
+          "name": "seatVentilation",
+          "desc": "Whether the car has seat ventilation."
+        },
+        {
+          "id": "cb06",
+          "label": "Navigation System",
+          "name": "seatVentilation",
+          "desc": "Whether the car has navigation system."
+        },
+        {
+          "id": "cb07",
+          "label": "Isofix",
+          "name": "isofix",
+          "desc": "Whether the car has isofix system."
+        },
+        {
+          "id": "cb08",
+          "label": "Electric Side Mirrors",
+          "name": "electricSeatAdjustment",
+          "desc": "Whether the car has electric side mirrors."
+        },
+        {
+          "id": "cb09",
+          "label": "Electric Windows",
+          "name": "electricWindows",
+          "desc": "Whether the car has electric windows."
+        },
+        {
+          "id": "cb10",
+          "label": "Heated Steering Wheel",
+          "name": "heatedSteeringWheel",
+          "desc": "Whether the car has heated steering wheel."
+        },
+        {
+          "id": "cb11",
+          "label": "Android Auto",
+          "name": "androidAuto",
+          "de,sc": "Whether the car has android auto."
+        },
+        {
+          "id": "cb12",
+          "label": "Sound System",
+          "name": "soundSystem",
+          "desc": "Whether the car has sound system."
+        },
+        {
+          "id": "cb13",
+          "label": "Air Conditioner",
+          "name": "airConditioner",
+          "desc": "Whether the car has air conditioner."
+        },
+        {
+          "id": "cb14",
+          "label": "Isofix",
+          "name": "isCrashed",
+          "desc": "Is the car was damaged."
+        },
+        {
+          "id": "cb15",
+          "label": "Is Crashed",
+          "name": "isofix",
+          "desc": "Whether the car has isofix system."
+        }
+      ]
+    },
+
+    "inputs": {
+      "mainInfo": [
+        {
+          "id": "i01",
+          "label": "Імʼя",
+          "type": "text",
+          "name": "userName",
+          "placeholder": "Іван Іванов",
+          "required": true
+        },
+        {
+          "id": "i02",
+          "label": "Телефон",
+          "type": "tel",
+          "name": "phoneNumber",
+          "pattern": "+############",
+          "placeholder": "+380988888545",
+          "maxlength": 12,
+          "required": true
+        },
+        {
+          "id": "i03",
+          "label": "Телеграм",
+          "type": "text",
+          "name": "telegram",
+          "placeholder": "@ivanivanov",
+          "required": false
+        },
+        {
+          "id": "i04",
+          "label": "Price",
+          "type": "email",
+          "name": "userEmail",
+          "placeholder": "ivanovivan@gmail.com",
+          "required": true
+        }
+      ]
+    },
+
+    "textarea": {
+      "heading": {
+        "title": "Description of the car",
+        "desc": "Enter additional information about the car, operating conditions, general technical condition, etc"
+      },
+      "label": "Car description",
+      "name": "description",
+      "placeholder": "Tell us a little bit about your car. Max 2000 symbols"
+    },
+    "checkbox": {
+      "id": "c01",
+      "label": "Даю згоду на обробку персональних даних",
+      "name": "agreement",
+      "ariaLabel": "перевірено"
+    },
+    "submitBtn": { "create": "Create", "edit": "Save changes" },
+
+    "validation": {
+      "images": {
+        "minLength": {
+          "message": "Try to add some photos of the car."
+        }
+      },
+      "name": {
+        "minLength": { "value": 2, "message": "Min length 2 symbols." },
+        "maxLength": { "value": 36, "message": "Max length 36 symbols." }
+      },
+      "category": {
+        "minLength": { "value": 1, "message": "Select one of the categories." }
+      },
+      "bodyType": {
+        "minLength": { "value": 1, "message": "Select one of the body types." }
+      },
+      "make": {
+        "minLength": { "value": 1, "message": "Select one of the makes." }
+      },
+      "model": {
+        "minLength": { "value": 1, "message": "Select one of the models." }
+      },
+      "year": {
+        "minLength": {
+          "value": 1925,
+          "message": "Select the production year from the list."
+        },
+        "maxLength": {
+          "message": "Production year can not be nigger current year."
+        }
+      },
+      "region": {
+        "minLength": { "value": 1, "message": "Select one of the regions." }
+      },
+      "city": {
+        "minLength": { "value": 1, "message": "Select one of the cities." }
+      },
+      "spareTire": {
+        "message": "Type of spare tire is required to choose one."
+      },
+      "interiorMatherial": {
+        "message": "Type of interior matherials is required to choose one."
+      },
+      "headlights": {
+        "message": "Type of headlights is required to choose one."
+      },
+      "mileage": {
+        "minLength": { "value": 1, "message": "Please set the mileage." },
+        "maxLength": {
+          "value": 5000,
+          "message": "Enter the mileage in thousands of kilometers."
+        }
+      },
+      "fuel": {
+        "message": "Fuel type is required to select one."
+      },
+      "gearbox": {
+        "message": "Gearbox type is required to select one."
+      },
+      "typeOfDrive": {
+        "message": "Type of drive is required to select one."
+      },
+      "color": {
+        "minLength": { "value": 1, "message": "Select one of the colors set." }
+      },
+      "description": {
+        "minLength": { "value": 12, "message": "Min length 12 symbols." },
+        "maxLength": {
+          "value": 2000,
+          "message": "Max length 2000 symbols."
+        }
+      },
+      "engineSize": {
+        "minLength": { "value": 1, "message": "Enter the engine size." }
+      },
+      "vinCode": {
+        "message": "Invalid VIN-code. Example: '1HGCM82633A123456'"
+      },
+
+      "phoneNumber": {
+        "message": "Invalid phone number format. Example: '+38 (099) 123-45-67'"
+      },
+      "price": {
+        "minLength": { "value": 1, "message": "The price is required." },
+        "maxLength": { "value": 10000000, "message": "The price is too big." }
+      }
+    }
+  },
+  "popup": {
+    "onSuccess": {
+      "title": "Ваша заявка успішно відправлена!",
+      "desc": "Ми зв'яжемося з вами найближчим часом."
+    },
+    "onError": {
+      "title": "Щось пішло не так...",
+      "desc": "Ми не змогли отримати Вашу заявку.\n Будь ласка, спробуйте ще раз."
+    },
+    "closeButtton": { "aria": "Кнопка закриття меню" }
+  }
+}
