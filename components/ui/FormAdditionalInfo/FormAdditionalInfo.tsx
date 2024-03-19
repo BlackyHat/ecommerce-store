@@ -1,6 +1,6 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
 
 import {
@@ -22,8 +22,8 @@ import { FormAdditionalInfoProps } from './types'
 export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
   loading,
 }) => {
-  const { control } = useForm()
-  const { title, desc, checkboxes } = content.form.additionalInfo
+  const { control } = useFormContext()
+  const { title, desc, checkboxes, inputs } = content.form.additionalInfo
 
   return (
     <>
@@ -31,16 +31,16 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
         <FormField
           control={control}
-          name="engineSize"
+          name={inputs.engine.name}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Engine Size</FormLabel>
+              <FormLabel>{inputs.engine.label}</FormLabel>
               <FormControl>
                 <PatternFormat
-                  format="%.% L"
+                  format={inputs.engine.format}
                   patternChar="%"
                   disabled={loading}
-                  placeholder="Set an engine size"
+                  placeholder={inputs.engine.placeholder}
                   mask="_"
                   customInput={Input}
                   value={field.value}
@@ -56,14 +56,14 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
 
         <FormField
           control={control}
-          name="vinCode"
+          name={inputs.vincode.name}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Vin Code</FormLabel>
+              <FormLabel>{inputs.vincode.label}</FormLabel>
               <FormControl>
                 <Input
                   disabled={loading}
-                  placeholder="Vin-code"
+                  placeholder={inputs.vincode.placeholder}
                   onChange={field.onChange}
                   onRemove={() => field.onChange('')}
                   value={field.value || ''}

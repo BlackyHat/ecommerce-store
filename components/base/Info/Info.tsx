@@ -50,7 +50,7 @@ export const Info: React.FC<InfoProps> = ({ data }) => (
 
     <div className="mt-10 flex items-center gap-x-3">
       <Button className="flex items-center gap-x-2">
-        Add To Cart <ShoppingCart />
+        Add To Favotite <ShoppingCart />
       </Button>
     </div>
   </div>

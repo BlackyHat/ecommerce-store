@@ -6,8 +6,11 @@ import { PlusCircle, LogIn } from 'lucide-react'
 
 import { Button } from '@/components/ui/Button/Button'
 
+import content from '@/data/common.json'
+
 export const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false)
+  const { sellCar } = content.buttons
 
   useEffect(() => {
     setIsMounted(true)
@@ -24,7 +27,7 @@ export const NavbarActions = () => {
         <PlusCircle className="text-black h-4 w-4" />
 
         <span className="ml-2 text-sm font-medium text-black ">
-          Sell your car
+          {sellCar.label}
         </span>
       </Button>
 

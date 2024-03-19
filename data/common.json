@@ -5,5 +5,12 @@
   "baseInfo": ["category", "body type", "make", "model", "color"],
   "footer": {
     "copyRights": "© 2024, Automotive store, Inc. All Rights reserved."
-  }
+  },
+  "buttons": {
+    "uploadImages": { "label": "Upload an Image" },
+    "sellCar": { "label": "Sell your car" },
+    "favotire": { "label": "Add To Favotite" }
+  },
+  "popup": { "alertModal": { "cancel": "Cancel", "continue": "Continue" } },
+  "infoSection": { "category": "Category" }
 }

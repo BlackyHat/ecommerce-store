@@ -12,7 +12,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { NumericFormat } from 'react-number-format'
 import { useParams, useRouter } from 'next/navigation'
 import axios from 'axios'
-import * as z from 'zod'
 import { Trash } from 'lucide-react'
 
 import {
@@ -48,8 +47,8 @@ export const CarForm: React.FC<CarFormProps> = ({
   colors,
   regions,
 }) => {
-  const { title, desc, popupMsg, buttonLabel, form } = content
-  const { formName, uploadImages, inputs, textarea, checkbox, submitBtn } = form
+  const { title, desc, popupMsg, form } = content
+  const { formName, uploadImages, submitBtn, carDesc, carPrice } = form
 
   const params = useParams()
   const router = useRouter()
@@ -65,7 +64,7 @@ export const CarForm: React.FC<CarFormProps> = ({
   const formTitle = initialData ? title.edit : title.create
   const formDescription = initialData ? desc.edit : desc.create
   const toastMessage = initialData ? popupMsg.edit : popupMsg.create
-  const action = initialData ? form.submitBtn.edit : form.submitBtn.create
+  const buttonLabel = initialData ? submitBtn.edit : submitBtn.create
 
   const onSubmit: SubmitHandler<FieldValues> = async data => {
     try {
@@ -131,6 +130,7 @@ export const CarForm: React.FC<CarFormProps> = ({
 
       <FormProvider {...methods}>
         <form
+          name={formName}
           onSubmit={methods.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
@@ -181,21 +181,21 @@ export const CarForm: React.FC<CarFormProps> = ({
           <Separator />
 
           <Heading
-            title={textarea.heading.title}
-            description={textarea.heading.desc}
+            title={carDesc.heading.title}
+            description={carDesc.heading.desc}
             className="text-xl"
           />
 
           <div className="max-w-4xl mr-auto">
             <FormField
               control={methods.control}
-              name={textarea.name}
+              name={carDesc.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{textarea.label}</FormLabel>
+                  <FormLabel>{carDesc.label}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder={textarea.placeholder}
+                      placeholder={carDesc.placeholder}
                       className="resize-none h-[240px]"
                       {...field}
                     />
@@ -213,28 +213,28 @@ export const CarForm: React.FC<CarFormProps> = ({
           <Separator />
 
           <Heading
-            title="Cost of the car"
-            description="Enter the price of the car"
+            title={carPrice.heading.title}
+            description={carPrice.heading.desc}
             className="text-xl"
           />
 
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
             <FormField
               control={methods.control}
-              name="price"
+              name={carPrice.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>{carPrice.label}</FormLabel>
                   <FormControl>
                     <NumericFormat
                       thousandSeparator={true}
                       allowNegative={false}
                       decimalScale={0}
-                      suffix={' $'}
+                      suffix={carPrice.suffix}
                       fixedDecimalScale={true}
                       valueIsNumericString={true}
                       disabled={loading}
-                      placeholder="Set a price"
+                      placeholder={carPrice.placeholder}
                       customInput={Input}
                       value={field.value}
                       onValueChange={values => field.onChange(values.value)}
@@ -257,7 +257,7 @@ export const CarForm: React.FC<CarFormProps> = ({
             size="lg"
             variant="outline"
           >
-            {action}
+            {buttonLabel}
           </Button>
         </form>
       </FormProvider>

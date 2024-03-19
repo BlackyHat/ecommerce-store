@@ -25,6 +25,114 @@
       "label": "Images, add 2-3 photo",
       "name": "images"
     },
+    "mainInfo": {
+      "title": "Main information",
+      "desc": "*The fields are mandatory",
+      "inputs": {
+        "userName": {
+          "id": "mi01",
+          "label": "Name",
+          "name": "name",
+          "format": "+38 (###) ###-##-##",
+          "placeholder": "Product name"
+        },
+        "mileage": {
+          "id": "mi02",
+          "label": "Kilometers",
+          "name": "mileage",
+          "suffix": " ths km.",
+          "placeholder": "Set a kilometers"
+        }
+      },
+      "selects": [
+        {
+          "id": "ms01",
+          "label": "Category",
+          "name": "categoryId",
+          "placeholder": "Select a Category"
+        },
+        {
+          "id": "ms02",
+          "label": "Body Type",
+          "name": "bodyTypeId",
+          "placeholder": "Select a Body Type"
+        },
+        {
+          "id": "ms03",
+          "label": "Make",
+          "name": "makeId",
+          "placeholder": "Select a Make"
+        },
+        {
+          "id": "ms04",
+          "label": "Model",
+          "name": "modelId",
+          "placeholder": "Select a Model",
+          "nested": true
+        },
+        {
+          "id": "ms05",
+          "label": "Year",
+          "name": "year",
+          "placeholder": "Select a production year"
+        },
+        {
+          "id": "ms06",
+          "label": "Region",
+          "name": "regionId",
+          "placeholder": "Select a region"
+        },
+        {
+          "id": "ms07",
+          "label": "City",
+          "name": "cityId",
+          "placeholder": "Select a city",
+          "nested": true
+        },
+        {
+          "id": "ms08",
+          "label": "Fuel Type",
+          "name": "fuel",
+          "placeholder": "Select a Fuel Type"
+        },
+        {
+          "id": "ms09",
+          "label": "Gearbox Type",
+          "name": "gearbox",
+          "placeholder": "Select a Gearbox Type"
+        },
+        {
+          "id": "ms10",
+          "label": "Type Of Drive",
+          "name": "typeOfDrive",
+          "placeholder": "Select a Type Of Drive"
+        },
+        {
+          "id": "ms11",
+          "label": "Color",
+          "name": "colorId",
+          "placeholder": "Select a Color"
+        },
+        {
+          "id": "ms12",
+          "label": "Headlights",
+          "name": "headlights",
+          "placeholder": "Select a Headlights"
+        },
+        {
+          "id": "ms13",
+          "label": "SpareTire",
+          "name": "spareTire",
+          "placeholder": "Select a SpareTire"
+        },
+        {
+          "id": "ms14",
+          "label": "Interior Matherial",
+          "name": "interiorMatherial",
+          "placeholder": "Select a Interior Matherial"
+        }
+      ]
+    },
     "contactInfo": {
       "title": "Contact information",
       "desc": "Enter contact information",
@@ -39,6 +147,21 @@
     "additionalInfo": {
       "title": "Additional info",
       "desc": "Check some preset config of your car",
+      "inputs": {
+        "engine": {
+          "id": "ai01",
+          "label": "Engine Size",
+          "name": "engineSize",
+          "format": "%.% L",
+          "placeholder": "Set an engine size"
+        },
+        "vincode": {
+          "id": "ai02",
+          "label": "Vin Code",
+          "name": "vinCode",
+          "placeholder": "Vin-code"
+        }
+      },
       "checkboxes": [
         {
           "id": "cb01",
@@ -133,46 +256,7 @@
       ]
     },
 
-    "inputs": {
-      "mainInfo": [
-        {
-          "id": "i01",
-          "label": "Імʼя",
-          "type": "text",
-          "name": "userName",
-          "placeholder": "Іван Іванов",
-          "required": true
-        },
-        {
-          "id": "i02",
-          "label": "Телефон",
-          "type": "tel",
-          "name": "phoneNumber",
-          "pattern": "+############",
-          "placeholder": "+380988888545",
-          "maxlength": 12,
-          "required": true
-        },
-        {
-          "id": "i03",
-          "label": "Телеграм",
-          "type": "text",
-          "name": "telegram",
-          "placeholder": "@ivanivanov",
-          "required": false
-        },
-        {
-          "id": "i04",
-          "label": "Price",
-          "type": "email",
-          "name": "userEmail",
-          "placeholder": "ivanovivan@gmail.com",
-          "required": true
-        }
-      ]
-    },
-
-    "textarea": {
+    "carDesc": {
       "heading": {
         "title": "Description of the car",
         "desc": "Enter additional information about the car, operating conditions, general technical condition, etc"
@@ -181,11 +265,15 @@
       "name": "description",
       "placeholder": "Tell us a little bit about your car. Max 2000 symbols"
     },
-    "checkbox": {
-      "id": "c01",
-      "label": "Даю згоду на обробку персональних даних",
-      "name": "agreement",
-      "ariaLabel": "перевірено"
+    "carPrice": {
+      "heading": {
+        "title": "Cost of the car",
+        "desc": "Enter the price of the car"
+      },
+      "label": "Price",
+      "name": "price",
+      "placeholder": "Set a price",
+      "suffix": " $"
     },
     "submitBtn": { "create": "Create", "edit": "Save changes" },
 
@@ -276,16 +364,5 @@
         "maxLength": { "value": 10000000, "message": "The price is too big." }
       }
     }
-  },
-  "popup": {
-    "onSuccess": {
-      "title": "Ваша заявка успішно відправлена!",
-      "desc": "Ми зв'яжемося з вами найближчим часом."
-    },
-    "onError": {
-      "title": "Щось пішло не так...",
-      "desc": "Ми не змогли отримати Вашу заявку.\n Будь ласка, спробуйте ще раз."
-    },
-    "closeButtton": { "aria": "Кнопка закриття меню" }
   }
 }
