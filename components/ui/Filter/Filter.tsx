@@ -5,7 +5,7 @@ import qs from 'query-string'
 
 import { Button } from '@/components/ui'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { FilterProps } from './types'
 

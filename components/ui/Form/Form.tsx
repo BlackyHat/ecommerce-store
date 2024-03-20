@@ -14,7 +14,7 @@ import {
 
 import { Label } from '@/components/ui/Label/Label'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { FormFieldContextValue, FormItemContextValue } from './types'
 

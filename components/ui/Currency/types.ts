@@ -1,3 +1,3 @@
 export interface CurrencyProps {
-  value?: string | number
+  value?: string | number;
 }

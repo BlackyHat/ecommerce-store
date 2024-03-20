@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 import { HeadingProps } from './types'
 
 export const Heading: React.FC<HeadingProps> = ({

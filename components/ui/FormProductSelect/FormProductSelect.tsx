@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { useFormContext } from 'react-hook-form'
+import { useFormContext } from "react-hook-form";
 
 import {
   FormControl,
@@ -13,9 +13,9 @@ import {
   SelectContent,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui'
+} from "@/components/ui";
 
-import { FormProductSelectProps } from './types'
+import { FormProductSelectProps } from "./types";
 
 export const FormProductSelect: React.FC<FormProductSelectProps> = ({
   fieldName,
@@ -24,7 +24,7 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
   loading,
   fieldOptions,
 }) => {
-  const { register, control } = useFormContext()
+  const { register, control } = useFormContext();
 
   return (
     <FormField
@@ -48,7 +48,7 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
               </SelectTrigger>
             </FormControl>
 
-            <SelectContent className="overflow-y-auto max-h-64 cursor-pointer">
+            <SelectContent className="max-h-64 cursor-pointer overflow-y-auto">
               <SelectedItems options={fieldOptions} />
             </SelectContent>
           </Select>
@@ -56,5 +56,5 @@ export const FormProductSelect: React.FC<FormProductSelectProps> = ({
         </FormItem>
       )}
     />
-  )
-}
+  );
+};

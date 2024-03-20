@@ -1,22 +1,22 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-import { PreviewModal } from '@/components/ui/PreviewModal'
+import { PreviewModal } from "@/components/ui/PreviewModal";
 
 export const ModalProvider = () => {
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   if (!isMounted) {
-    return null
+    return null;
   }
   return (
     <>
       <PreviewModal />
     </>
-  )
-}
+  );
+};

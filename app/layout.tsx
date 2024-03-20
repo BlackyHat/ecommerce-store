@@ -1,23 +1,23 @@
-import type { Metadata } from 'next'
-import { Urbanist } from 'next/font/google'
+import type { Metadata } from "next";
+import { Urbanist } from "next/font/google";
 
-import { Header, Footer } from '@/layout'
+import { Header, Footer } from "@/layout";
 
-import { ToastProvider, ModalProvider } from '@/providers'
+import { ToastProvider, ModalProvider } from "@/providers";
 
-import './globals.css'
+import "./globals.css";
 
-const font = Urbanist({ subsets: ['latin'] })
+const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Car Hub',
-  description: 'New & Used Cars for Sale - Car Hub UA',
-}
+  title: "Car Hub",
+  description: "New & Used Cars for Sale - Car Hub UA",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="scroll-smooth">
@@ -29,5 +29,5 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
-  )
+  );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { formatter } from '@/lib/utils'
+import { formatter } from '@/utils'
 
 import { CurrencyProps } from './types'
 

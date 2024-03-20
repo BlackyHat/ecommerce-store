@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useFormContext } from 'react-hook-form'
-import { PatternFormat } from 'react-number-format'
+import { useFormContext } from "react-hook-form";
+import { PatternFormat } from "react-number-format";
 
 import {
   Heading,
@@ -13,22 +13,22 @@ import {
   FormDescription,
   FormItem,
   Input,
-} from '@/components/ui'
+} from "@/components/ui";
 
-import content from '@/data/car-form.json'
+import content from "@/data/car-form.json";
 
-import { FormAdditionalInfoProps } from './types'
+import { FormAdditionalInfoProps } from "./types";
 
 export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
   loading,
 }) => {
-  const { control } = useFormContext()
-  const { title, desc, checkboxes, inputs } = content.form.additionalInfo
+  const { control } = useFormContext();
+  const { title, desc, checkboxes, inputs } = content.form.additionalInfo;
 
   return (
     <>
       <Heading title={title} description={desc} className="text-xl" />
-      <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
+      <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
         <FormField
           control={control}
           name={inputs.engine.name}
@@ -44,7 +44,7 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
                   mask="_"
                   customInput={Input}
                   value={field.value}
-                  onValueChange={values =>
+                  onValueChange={(values) =>
                     field.onChange(values.formattedValue)
                   }
                 />
@@ -65,8 +65,8 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
                   disabled={loading}
                   placeholder={inputs.vincode.placeholder}
                   onChange={field.onChange}
-                  onRemove={() => field.onChange('')}
-                  value={field.value || ''}
+                  onRemove={() => field.onChange("")}
+                  value={field.value || ""}
                 />
               </FormControl>
               <FormMessage />
@@ -74,7 +74,7 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
           )}
         />
 
-        {checkboxes.map(checkbox => (
+        {checkboxes.map((checkbox) => (
           <FormField
             key={checkbox.id}
             control={control}
@@ -99,5 +99,5 @@ export const FormAdditionalInfo: React.FC<FormAdditionalInfoProps> = ({
         ))}
       </div>
     </>
-  )
-}
+  );
+};

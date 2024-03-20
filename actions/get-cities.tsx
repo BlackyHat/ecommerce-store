@@ -1,4 +1,4 @@
-import { City } from '@/types';
+import { City } from "@/types";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/cities`;
 

@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { MainNavProps } from './types'
 
@@ -19,7 +19,7 @@ export const MainNav: React.FC<MainNavProps> = ({ data }) => {
     }))
 
   return (
-    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
+    <nav className="lg:space-x-6 mx-6 flex items-center space-x-4">
       {routes.map(route => (
         <Link
           key={route.href}

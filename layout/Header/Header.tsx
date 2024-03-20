@@ -1,13 +1,13 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import { MainNav, NavbarActions } from '@/components/base'
+import { MainNav, NavbarActions } from "@/components/base";
 
-import getCategories from '@/actions/get-categories'
+import getCategories from "@/actions/get-categories";
 
-import content from '@/data/common.json'
+import content from "@/data/common.json";
 
 export const Header = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
 
   return (
     <header className="border-b py-4">
@@ -21,5 +21,5 @@ export const Header = async () => {
         <NavbarActions />
       </div>
     </header>
-  )
-}
+  );
+};

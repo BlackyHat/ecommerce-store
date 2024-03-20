@@ -76,12 +76,11 @@ body,
 
     --ring: 217.2 32.6% 17.5%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

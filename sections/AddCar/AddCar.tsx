@@ -1,18 +1,18 @@
-import { CarForm } from '@/components/base/CarForm'
+import { CarForm } from "@/components/base/CarForm";
 
-import getRegions from '@/actions/get-regions'
-import getColors from '@/actions/get-colors'
-import getMakes from '@/actions/get-makes'
-import getBodyTypes from '@/actions/get-body-types'
-import getCategories from '@/actions/get-categories'
+import getRegions from "@/actions/get-regions";
+import getColors from "@/actions/get-colors";
+import getMakes from "@/actions/get-makes";
+import getBodyTypes from "@/actions/get-body-types";
+import getCategories from "@/actions/get-categories";
 
 export const AddCar = async () => {
-  const categories = await getCategories()
-  const bodyTypes = await getBodyTypes()
-  const makes = await getMakes()
+  const categories = await getCategories();
+  const bodyTypes = await getBodyTypes();
+  const makes = await getMakes();
 
-  const colors = await getColors()
-  const regions = await getRegions()
+  const colors = await getColors();
+  const regions = await getRegions();
 
   return (
     <section className="section">
@@ -27,5 +27,5 @@ export const AddCar = async () => {
         />
       </div>
     </section>
-  )
-}
+  );
+};

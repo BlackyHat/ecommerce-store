@@ -1,59 +1,59 @@
-'use client'
+"use client";
 
-import { MouseEventHandler } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Expand, ShoppingCart } from 'lucide-react'
+import { MouseEventHandler } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Expand, ShoppingCart } from "lucide-react";
 
-import { Currency, IconButton } from '@/components/ui'
+import { Currency, IconButton } from "@/components/ui";
 
-import usePreviewModal from '@/hooks/use-preview-modal'
+import usePreviewModal from "@/hooks/use-preview-modal";
 
-import { ProductCardProps } from './types'
+import { ProductCardProps } from "./types";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const previewModal = usePreviewModal()
+  const previewModal = usePreviewModal();
 
-  const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
-    event.stopPropagation()
-    previewModal.onOpen(data)
-  }
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    previewModal.onOpen(data);
+  };
 
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
-    event.stopPropagation()
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
     //remove this
-  }
+  };
 
   return (
-    <div className="bg-white relative group cursor-pointer rounded-xl border p-3 space-y-4">
-      <div className="aspect-square rounded-xl bg-gray-100 relative">
+    <div className="group relative cursor-pointer space-y-4 rounded-xl border bg-white p-3">
+      <div className="relative aspect-square rounded-xl bg-gray-100">
         <Image
           alt={data.name}
           src={data.images?.[0]?.url}
           fill
-          className="aspect-square object-cover rounded-md"
+          className="aspect-square rounded-md object-cover"
           sizes="(max-width: 767px) 100vw, (min-width: 1280px) 33wv,  (min-width: 1280px) 29.px"
         />
 
-        <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-          <div className="flex gap-x-6 justify-center">
+        <div className="absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100">
+          <div className="flex justify-center gap-x-6">
             <IconButton
               onClick={onPreview}
               icon={<Expand size={20} />}
-              className="text-grey-600 z-10"
+              className="z-10 text-gray-600"
             />
 
             <IconButton
               onClick={onAddToCart}
               icon={<ShoppingCart size={20} />}
-              className="text-grey-600 z-10"
+              className="z-10 text-gray-600"
             />
           </div>
         </div>
       </div>
 
       <div>
-        <p className="font-semi-bold text-lg">{data.name}</p>
+        <p className="text-lg font-semibold">{data.name}</p>
 
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
@@ -68,5 +68,5 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         aria-label={data.name}
       />
     </div>
-  )
-}
+  );
+};

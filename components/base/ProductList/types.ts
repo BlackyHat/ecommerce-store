@@ -1,6 +1,6 @@
-import { Product } from '@/types'
+import { Product } from "@/types";
 
 export interface ProductListProps {
-  title: string
-  items: Product[]
+  title: string;
+  items: Product[];
 }

@@ -1,5 +1,11 @@
-export const NoResults: React.FC = () => (
-  <div className="flex items-center justify-center h-full w-full text-neutral-500">
-    No results found.
-  </div>
-)
+import content from "@/data/common.json";
+
+export const NoResults: React.FC = () => {
+  const { noResult } = content;
+
+  return (
+    <div className="flex size-full items-center justify-center text-neutral-500">
+      {noResult.label}
+    </div>
+  );
+};

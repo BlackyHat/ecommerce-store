@@ -3,7 +3,7 @@ import { XCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { InputProps } from './types'
 
@@ -22,12 +22,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {onRemove && props.value && (
           <Button
-            className="absolute right-0 top-[50%] translate-y-[-50%]"
+            className="absolute right-0 top-1/2 -translate-y-1/2"
             variant="ghost"
             size="icon"
             onClick={onRemove}
           >
-            <XCircle className="w-4 h-4 stroke-red-600" />
+            <XCircle className="size-4 stroke-red-600" />
           </Button>
         )}
       </div>

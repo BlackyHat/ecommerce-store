@@ -1,5 +1,5 @@
-import { Category } from '@/types'
+import { Category } from "@/types";
 
 export interface MainNavProps {
-  data: Category[]
+  data: Category[];
 }
