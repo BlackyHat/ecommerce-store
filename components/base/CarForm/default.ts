@@ -37,4 +37,4 @@ export const defaultValues = {
   seatHeating: undefined,
   soundSystem: undefined,
   sportSeats: undefined,
-}
+};

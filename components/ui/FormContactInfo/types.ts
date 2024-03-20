@@ -1,1 +1,1 @@
-export type FormContactInfoProps = { loading: boolean }
+export type FormContactInfoProps = { loading: boolean };

@@ -14,5 +14,7 @@
   "infoSection": {
     "button": { "label": "Add To Favotite" },
     "props": ["Category", "Body Type", "Make", "Model", "Color"]
-  }
+  },
+  "filters": { "label": "Filters" },
+  "noResult": { "label": "No results found." }
 }

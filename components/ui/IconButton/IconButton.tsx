@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { IconButtonProps } from './types'
 
@@ -17,4 +17,3 @@ export const IconButton: React.FC<IconButtonProps> = ({
     {icon}
   </button>
 )
-

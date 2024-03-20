@@ -353,11 +353,19 @@
         "minLength": { "value": 1, "message": "Enter the engine size." }
       },
       "vinCode": {
-        "message": "Invalid VIN-code. Example: '1HGCM82633A123456'"
+        "message": "Invalid VIN-code. Example: '1HGCM82633A123456'",
+        "format": {
+          "reg": "^[A-HJ-NPR-Z0-9]{17}$/i",
+          "message": "Unacceptable characters."
+        }
       },
 
       "phoneNumber": {
-        "message": "Invalid phone number format. Example: '+38 (099) 123-45-67'"
+        "message": "Invalid phone number format. Example: '+38 (099) 123-45-67'",
+        "format": {
+          "reg": "^\\+38\\s(0\\d{2})\\s\\d{3}-\\d{2}-\\d{2}$",
+          "message": "Unacceptable characters."
+        }
       },
       "price": {
         "minLength": { "value": 1, "message": "The price is required." },

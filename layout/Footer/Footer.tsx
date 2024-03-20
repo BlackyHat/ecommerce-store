@@ -1,4 +1,4 @@
-import content from '@/data/common.json'
+import content from "@/data/common.json";
 
 export const Footer = () => {
   return (
@@ -9,5 +9,5 @@ export const Footer = () => {
         </p>
       </div>
     </footer>
-  )
-}
+  );
+};

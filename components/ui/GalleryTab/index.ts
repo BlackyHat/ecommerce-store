@@ -1,1 +1,1 @@
-export * from './GalleryTab'
+export * from "./GalleryTab";

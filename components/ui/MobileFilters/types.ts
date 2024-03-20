@@ -1,6 +1,6 @@
-import { Color, BodyType } from '@/types'
+import { Color, BodyType } from "@/types";
 
 export interface MobileFiltersProps {
-  bodyTypes: BodyType[]
-  colors: Color[]
+  bodyTypes: BodyType[];
+  colors: Color[];
 }

@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-import { formatter } from '@/lib/utils'
+import { formatter } from "@/lib/utils";
 
-import { CurrencyProps } from './types'
+import { CurrencyProps } from "./types";
 
 export const Currency: React.FC<CurrencyProps> = ({ value }) => {
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   if (!isMounted) {
-    return null
+    return null;
   }
 
-  return <p className="font-semibold">{formatter.format(Number(value))}</p>
-}
+  return <p className="font-semibold">{formatter.format(Number(value))}</p>;
+};

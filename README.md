@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CARSHUB 💻🧩👨🏿‍💻
 
-## Getting Started
+**[View live page](https://carshub-store.vercel.app/)**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## 🗂️ Project description 🗂️
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A website for the **CarsHub** website development company.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Project name**: CarsHub
+- **Project goals**:
+- Improve Visibility: Boost search engine rankings to attract more potential buyers and partners to the platform.
+- Increase Sales: Optimize the website to sell more used cars efficiently.
+- Enhance User Experience: Improve navigation and functionality for a seamless browsing experience.
+- Generate Leads: Capture more inquiries with persuasive sales tactics and user-friendly forms.
+- **Target audience**:
+  - **Age**: 18-50+
+  - **Gender**: All
+- **Product scope**: Development of a multi-page website for the company, whose main field of activity is e-commerce
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## ⚙️ Creating the project ⚙️
 
-## Learn More
+**CarsHub** is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-To learn more about Next.js, take a look at the following resources:
+### Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Optimization**: The website is optimized for fast loading, providing users
+  with quick access to information.
+- **Modularity and reusability**: The product is built using a component
+  approach, which makes the code modular and allows components to be used on
+  different pages and in different sections of the project. This simplifies the
+  maintenance of the site and the expansion of its functionality.
+- **Linters and formatting**: Using tools like Prettier and ESLint helps
+  maintain code standards, ensures a consistent style, and identifies potential
+  problems in the code.
+- **Adaptability**: The website is responsive, allowing you to create dynamic
+  and interactive user interfaces without reloading pages. This increases user
+  engagement and interaction.
+- **Accessibility**:
+  - Intuitive design
+  - Semantic HTML
+  - Mobile-friendly interface
+  - Web resource available for any internet connection
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🗃️ Deployment 🗃️
 
-## Deploy on Vercel
+To deploy this project, you need to perform the following steps:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**: Use the `git clone` command to clone this
+   repository to your computer.
+2. **Install the dependencies**: Open a terminal in the root of the project and
+   run `npm install` or `yarn install` to install all required dependencies.
+3. **Setting environment variables**: Create a `.env` file in the root folder
+   and add the necessary environment variables that you need for the project
+   according to the `.env.example` file.
+4. **Run the application**: Run the `npm run dev` or `yarn dev` command to run
+   the project on the local server.
+5. **Deploy**: To deploy this project to a production server, use hosting
+   platforms such as Vercel, Netlify, or others.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📱 Contacts 📱
+
+Ready to answer your questions and provide additional
+information:
+
+- **Author**: [Oleksandr Podoliako](https://github.com/BlackyHat)
+- **Linkedin**: [http://linkedin.com/in/oleksandr-vp](http://linkedin.com/in/oleksandr-vp)
+- **Telegram**: [@blackhatty](https://t.me/blackhatty)

@@ -1,8 +1,6 @@
-import { z } from 'zod'
+import { z } from "zod";
 
-import { phonePattern, vinPattern } from '@/utils/constants/formPatterns'
-
-import content from '@/data/car-form.json'
+import content from "@/data/car-form.json";
 
 import {
   FuelType,
@@ -11,9 +9,9 @@ import {
   InteriorMatherial,
   SpareTire,
   TypeOfDriveOption,
-} from '@/types'
+} from "@/types";
 
-const { validation } = content.form
+const { validation } = content.form;
 const {
   images,
   name,
@@ -37,7 +35,7 @@ const {
   vinCode,
   phoneNumber,
   price,
-} = validation
+} = validation;
 
 export const formSchema = z.object({
   //main required information
@@ -45,7 +43,7 @@ export const formSchema = z.object({
   images: z
     .object({ url: z.string() })
     .array()
-    .refine(arr => !!arr.length, {
+    .refine((arr) => !!arr.length, {
       message: images.minLength.message,
     }),
   name: z
@@ -113,11 +111,10 @@ export const formSchema = z.object({
 
   colorId: z.string().min(color.minLength.value, color.minLength.message),
 
-  description: z.string()
+  description: z
+    .string()
     .min(description.minLength.value, description.minLength.message)
-    .max(description.maxLength.value, description.maxLength.message)
-,
-
+    .max(description.maxLength.value, description.maxLength.message),
   engineSize: z
     .string()
     .min(engineSize.minLength.value, engineSize.minLength.message)
@@ -126,7 +123,7 @@ export const formSchema = z.object({
 
   vinCode: z
     .string()
-    .refine(code => vinPattern.test(code), vinCode)
+    .regex(RegExp(vinCode.format.reg), vinCode.format.message)
     .optional()
     .nullable(),
   isFeatured: z.boolean().default(false).optional(),
@@ -151,6 +148,8 @@ export const formSchema = z.object({
     .number()
     .min(price.minLength.value, price.minLength.message)
     .max(price.maxLength.value, price.maxLength.message),
-  
-  phone: z.string().refine(phone => phonePattern.test(phone), phoneNumber),
-})
+
+  phone: z
+    .string()
+    .regex(RegExp(phoneNumber.format.reg), phoneNumber.format.message),
+});
