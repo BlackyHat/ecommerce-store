@@ -1,7 +1,7 @@
 {
   "main": {
-    "title": "Car Hub – Auto Bazaar #1, it's easy to buy and sell a proven car!",
-    "description": "New & Used Cars for Sale - fast sale and easy purchase of new and used cars. A car marketplace with 1,400 cars for sale every day. Search the database of car sales ads. Catalogs of car dealerships and service stations.",
+    "title": "Car Hub – Marketplace #1, it's easy to buy and sell a proven car!",
+    "description": "New & Used Cars for Sale - fast sale and easy purchase of new and used cars. A car marketplace with 1,000+ cars for sale every day. Search the database of car sales ads. Catalogs of car dealerships and service stations.",
     "keywords": "Car Hub, car, auto, car sale, cars, car dealerships, car market, car bazaar, car catalog",
     "locale": "en-GB",
     "images": [
@@ -12,5 +12,29 @@
         "alt": "Car Hub - Auto Bazaar #1, it's easy to buy and sell a proven car!"
       }
     ]
+  },
+  "usedCars": {
+    "title": "Car Hub –used cars it's easy to buy and sell a proven car!",
+    "description": "Used Cars for Sale - fast sale and easy purchase. A car marketplace with 1,000+ cars for sale every day. Search the database of car sales ads.",
+    "keywords": "Car Hub, car, auto, car sale, cars, car dealerships, car market, car bazaar, car catalog",
+    "alternates": {
+      "canonical": "/used-cars"
+    }
+  },
+  "parts": {
+    "title": "Car Hub Parts – used and new cars parts",
+    "description": "Cars Parts - fast sale and easy purchase. A car parts marketplace with 1000,000+ car's parts for sale every day. Search the database of car sales ads.",
+    "keywords": "Car Hub, car, auto, car's parts, cars, car market, car bazaar, car catalog",
+    "alternates": {
+      "canonical": "/parts"
+    }
+  },
+  "blog": {
+    "title": "Car Hub – community of people who share a passion for cars",
+    "description": "Car Hub Blog - community of people who share a passion for cars. Human answers to automotive questions",
+    "keywords": "Car Hub, car, blog auto, car's, cars answers, car's questions, car's photos, car's repair, restore car",
+    "alternates": {
+      "canonical": "/blog"
+    }
   }
 }

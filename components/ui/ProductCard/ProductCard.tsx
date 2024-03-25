@@ -1,28 +1,28 @@
-"use client";
+'use client'
 
-import { MouseEventHandler } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Expand, ShoppingCart } from "lucide-react";
+import { MouseEventHandler } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Expand, Star } from 'lucide-react'
 
-import { Currency, IconButton } from "@/components/ui";
+import { Currency, IconButton } from '@/components/ui'
 
-import usePreviewModal from "@/hooks/use-preview-modal";
+import usePreviewModal from '@/hooks/use-preview-modal'
 
-import { ProductCardProps } from "./types";
+import { ProductCardProps } from './types'
 
 export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const previewModal = usePreviewModal();
+  const previewModal = usePreviewModal()
 
-  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-    previewModal.onOpen(data);
-  };
+  const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
+    event.stopPropagation()
+    previewModal.onOpen(data)
+  }
 
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
+    event.stopPropagation()
     //remove this
-  };
+  }
 
   return (
     <div className="group relative cursor-pointer space-y-4 rounded-xl border bg-white p-3">
@@ -45,7 +45,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
             <IconButton
               onClick={onAddToCart}
-              icon={<ShoppingCart size={20} />}
+              icon={<Star size={20} />}
               className="z-10 text-gray-600"
             />
           </div>
@@ -64,9 +64,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
       <Link
         className="absolute inset-0 !m-0"
-        href={`/car/${data.id}`}
+        href={`/${data.id}`}
         aria-label={data.name}
       />
     </div>
-  );
-};
+  )
+}

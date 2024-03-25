@@ -1,15 +1,18 @@
+import type { Metadata } from 'next'
+
 import { Hero, CarsGallery } from '@/sections'
 
 import getCategory from '@/actions/get-category'
 import getColors from '@/actions/get-colors'
 import getProducts from '@/actions/get-products'
 import getBodyTypes from '@/actions/get-body-types'
-import getCategories from '@/actions/get-categories'
 
-interface CategoryPageProps {
-  params: {
-    categoryId: string
-  }
+import content from '@/data/common.json'
+import meta from '@/data/meta.json'
+
+export const metadata: Metadata = meta.usedCars
+
+interface UsedCarsPageProps {
   searchParams: {
     colorId: string
     bodyTypeId: string
@@ -20,25 +23,8 @@ interface CategoryPageProps {
   }
 }
 
-export async function generateStaticParams() {
-  const pages = await getCategories()
-
-  const staticParams =
-    pages?.map(page =>  ({
-        slug: page.name,
-        categoryId: page.id,
-      })
-    ) || []
-
-  return staticParams
-}
-
-const CategoryPage: React.FC<CategoryPageProps> = async ({
-  params,
-  searchParams,
-}) => {
+const UsedCarsPage: React.FC<UsedCarsPageProps> = async ({ searchParams }) => {
   const products = await getProducts({
-    categoryId: params.categoryId,
     colorId: searchParams.colorId,
     bodyTypeId: searchParams.bodyTypeId,
     makeId: searchParams.makeId,
@@ -49,7 +35,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 
   const bodyTypes = await getBodyTypes()
   const colors = await getColors()
-  const category = await getCategory(params.categoryId)
+  const category = await getCategory(content.routes[0].id)
 
   return (
     <>
@@ -60,4 +46,4 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   )
 }
 
-export default CategoryPage
+export default UsedCarsPage
