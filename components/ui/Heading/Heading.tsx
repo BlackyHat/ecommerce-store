@@ -11,8 +11,8 @@ export const Heading: React.FC<HeadingProps> = ({
     <div>
       <h2
         className={cn(
-          'text-xl sm:text-3xl font-bold tracking-tight',
-          className
+          'text-xl font-bold tracking-tight sm:text-3xl',
+          className,
         )}
       >
         {title}
@@ -20,8 +20,8 @@ export const Heading: React.FC<HeadingProps> = ({
 
       <p
         className={cn(
-          'text-xs sm:text-small text-muted-foreground',
-          descClassName
+          'sm:text-small text-xs text-muted-foreground',
+          descClassName,
         )}
       >
         {description}

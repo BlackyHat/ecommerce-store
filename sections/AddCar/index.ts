@@ -1,1 +1,1 @@
-export * from "./AddCar";
+export * from './AddCar'

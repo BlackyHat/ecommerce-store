@@ -1,6 +1,6 @@
-import { Gallery, Info, ProductList } from "@/components/base";
+import { Gallery, Info, ProductList } from '@/components/base'
 
-import { CarOverviewProps } from "./types";
+import { CarOverviewProps } from './types'
 
 export const CarOverview: React.FC<CarOverviewProps> = ({
   productsList,
@@ -20,4 +20,4 @@ export const CarOverview: React.FC<CarOverviewProps> = ({
       <ProductList title="Related Items" items={productsList} />
     </div>
   </section>
-);
+)

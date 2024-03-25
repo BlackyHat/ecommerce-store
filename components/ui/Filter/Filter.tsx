@@ -27,7 +27,7 @@ export const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
         url: window.location.href,
         query,
       },
-      { skipNull: true }
+      { skipNull: true },
     )
     router.push(url)
   }
@@ -43,8 +43,8 @@ export const Filter: React.FC<FilterProps> = ({ name, data, valueKey }) => {
           <div key={filter.id} className="flex items-center">
             <Button
               className={cn(
-                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
-                selectedValue === filter.id && 'bg-black text-white'
+                'rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-800',
+                selectedValue === filter.id && 'bg-black text-white',
               )}
               onClick={() => onClick(filter.id)}
             >

@@ -17,14 +17,14 @@ export const MainNav: React.FC = () => {
   }))
 
   return (
-    <nav className="lg:space-x-6 mx-6 flex items-center space-x-4">
+    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
       {routes.map(route => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium leading-8 transition-colors hover:text-black text-neutral-500 capitalize',
-            { 'text-black': route.active }
+            'text-sm font-medium capitalize leading-8 text-neutral-500 transition-colors hover:text-black',
+            { 'text-black': route.active },
           )}
         >
           {route.label}

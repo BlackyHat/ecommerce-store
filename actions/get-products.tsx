@@ -1,17 +1,17 @@
-import { Product } from "@/types";
-import qs from "query-string";
+import { Product } from '@/types'
+import qs from 'query-string'
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
 
 interface Query {
-  categoryId?: string;
-  colorId?: string;
-  bodyTypeId?: string;
-  makeId?: string;
-  modelId?: string;
-  regionId?: string;
-  cityId?: string;
-  isFeatured?: boolean;
+  categoryId?: string
+  colorId?: string
+  bodyTypeId?: string
+  makeId?: string
+  modelId?: string
+  regionId?: string
+  cityId?: string
+  isFeatured?: boolean
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -27,9 +27,9 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       cityId: query.cityId,
       isFeatured: query.isFeatured,
     },
-  });
-  const res = await fetch(url);
-  return res.json();
-};
+  })
+  const res = await fetch(url)
+  return res.json()
+}
 
-export default getProducts;
+export default getProducts

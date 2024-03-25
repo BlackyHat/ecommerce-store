@@ -1,107 +1,107 @@
 export interface Billboard {
-  id: string;
-  label: string;
-  imageUrl: string;
+  id: string
+  label: string
+  imageUrl: string
 }
 
 export interface Category {
-  id: string;
-  name: string;
-  billboard: Billboard;
-  products: Product[];
+  id: string
+  name: string
+  billboard: Billboard
+  products: Product[]
 }
 
 export interface BodyType {
-  id: string;
-  label: string;
-  imageUrl: string;
-  products: Product[];
+  id: string
+  label: string
+  imageUrl: string
+  products: Product[]
 }
 
 export interface Make {
-  id: string;
-  label: string;
-  models: Model[];
-  products: Product[];
+  id: string
+  label: string
+  models: Model[]
+  products: Product[]
 }
 
 export interface Model {
-  id: string;
-  label: string;
-  make: Make;
-  products: Product[];
+  id: string
+  label: string
+  make: Make
+  products: Product[]
 }
 export interface Region {
-  id: string;
-  name: string;
-  cities: City[];
-  products: Product[];
+  id: string
+  name: string
+  cities: City[]
+  products: Product[]
 }
 
 export interface City {
-  id: string;
-  name: string;
-  region: Region;
-  products: Product[];
+  id: string
+  name: string
+  region: Region
+  products: Product[]
 }
 
 export interface Product {
-  id: string;
+  id: string
 
-  images: Image[];
-  name: string;
-  category: Category;
-  bodyType: BodyType;
-  make: Make;
-  model: Model;
-  color: Color;
+  images: Image[]
+  name: string
+  category: Category
+  bodyType: BodyType
+  make: Make
+  model: Model
+  color: Color
 
-  year: number;
-  mileage: number;
-  fuel: FuelType;
-  gearbox: GearboxType;
-  typeOfDrive: TypeOfDriveOption;
+  year: number
+  mileage: number
+  fuel: FuelType
+  gearbox: GearboxType
+  typeOfDrive: TypeOfDriveOption
 
-  region: Region;
-  city: City;
-  headlights: Headlights;
-  spareTire: SpareTire;
-  interiorMatherial: InteriorMatherial;
+  region: Region
+  city: City
+  headlights: Headlights
+  spareTire: SpareTire
+  interiorMatherial: InteriorMatherial
 
-  description: string;
-  isFeatured: boolean;
-  isArchived: boolean;
+  description: string
+  isFeatured: boolean
+  isArchived: boolean
 
-  engineSize: string | undefined;
-  vinCode: string | undefined;
-  isCrashed: boolean;
-  airConditioner: boolean;
-  androidAuto: boolean;
-  heatedSteeringWheel: boolean;
-  electricWindows: boolean;
-  electricSideMirrors: boolean;
-  electricSeatAdjustment: boolean;
-  isofix: boolean;
-  navigationSystem: boolean;
-  seatVentilation: boolean;
-  seatHeating: boolean;
-  soundSystem: boolean;
-  sportSeats: boolean;
+  engineSize: string | undefined
+  vinCode: string | undefined
+  isCrashed: boolean
+  airConditioner: boolean
+  androidAuto: boolean
+  heatedSteeringWheel: boolean
+  electricWindows: boolean
+  electricSideMirrors: boolean
+  electricSeatAdjustment: boolean
+  isofix: boolean
+  navigationSystem: boolean
+  seatVentilation: boolean
+  seatHeating: boolean
+  soundSystem: boolean
+  sportSeats: boolean
 
-  price: number;
-  phone: string;
+  price: number
+  phone: string
 }
 
 export interface Image {
-  id: string;
-  url: string;
-  position: number;
+  id: string
+  url: string
+  position: number
 }
 
 export interface Color {
-  id: string;
-  name: string;
-  value: string;
+  id: string
+  name: string
+  value: string
 }
 
 export enum FuelType {

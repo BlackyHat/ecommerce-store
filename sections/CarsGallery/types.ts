@@ -1,7 +1,7 @@
-import { BodyType, Color, Product } from "@/types";
+import { BodyType, Color, Product } from '@/types'
 
 export type CarsGalleryProps = {
-  products: Product[];
-  bodyTypes: BodyType[];
-  colors: Color[];
-};
+  products: Product[]
+  bodyTypes: BodyType[]
+  colors: Color[]
+}

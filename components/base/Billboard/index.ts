@@ -1,1 +1,1 @@
-export * from "./Billboard";
+export * from './Billboard'

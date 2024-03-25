@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form'
 
 import {
   FormControl,
@@ -13,9 +13,9 @@ import {
   SelectContent,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui";
+} from '@/components/ui'
 
-import { FormSelectNestedProps } from "./types";
+import { FormSelectNestedProps } from './types'
 
 export const FormSelectNested: React.FC<FormSelectNestedProps> = ({
   fieldName,
@@ -24,7 +24,7 @@ export const FormSelectNested: React.FC<FormSelectNestedProps> = ({
   loading,
   fieldOptions,
 }) => {
-  const { register, control } = useFormContext();
+  const { register, control } = useFormContext()
 
   return (
     <FormField
@@ -60,5 +60,5 @@ export const FormSelectNested: React.FC<FormSelectNestedProps> = ({
         </FormItem>
       )}
     />
-  );
-};
+  )
+}

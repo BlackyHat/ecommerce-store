@@ -1,5 +1,5 @@
-import { Image as ImageType } from "@/types";
+import { Image as ImageType } from '@/types'
 
 export interface GalleryProps {
-  images: ImageType[];
+  images: ImageType[]
 }

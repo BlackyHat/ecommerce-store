@@ -1,5 +1,5 @@
-import { FieldOptions } from "@/types";
+import { FieldOptions } from '@/types'
 
 export interface SelectedItemsProps {
-  options: (string | FieldOptions)[];
+  options: (string | FieldOptions)[]
 }
