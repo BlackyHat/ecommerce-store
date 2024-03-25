@@ -1,0 +1,16 @@
+{
+  "main": {
+    "title": "Car Hub – Auto Bazaar #1, it's easy to buy and sell a proven car!",
+    "description": "New & Used Cars for Sale - fast sale and easy purchase of new and used cars. A car marketplace with 1,400 cars for sale every day. Search the database of car sales ads. Catalogs of car dealerships and service stations.",
+    "keywords": "Car Hub, car, auto, car sale, cars, car dealerships, car market, car bazaar, car catalog",
+    "locale": "en-GB",
+    "images": [
+      {
+        "url": "/meta/og-image.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Car Hub - Auto Bazaar #1, it's easy to buy and sell a proven car!"
+      }
+    ]
+  }
+}

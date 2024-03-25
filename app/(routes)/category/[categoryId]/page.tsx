@@ -1,22 +1,36 @@
-import { Hero, CarsGallery } from "@/sections";
+import { Hero, CarsGallery } from '@/sections'
 
-import getCategory from "@/actions/get-category";
-import getColors from "@/actions/get-colors";
-import getProducts from "@/actions/get-products";
-import getBodyTypes from "@/actions/get-body-types";
+import getCategory from '@/actions/get-category'
+import getColors from '@/actions/get-colors'
+import getProducts from '@/actions/get-products'
+import getBodyTypes from '@/actions/get-body-types'
+import getCategories from '@/actions/get-categories'
 
 interface CategoryPageProps {
   params: {
-    categoryId: string;
-  };
+    categoryId: string
+  }
   searchParams: {
-    colorId: string;
-    bodyTypeId: string;
-    makeId: string;
-    modelId: string;
-    regionId: string;
-    cityId: string;
-  };
+    colorId: string
+    bodyTypeId: string
+    makeId: string
+    modelId: string
+    regionId: string
+    cityId: string
+  }
+}
+
+export async function generateStaticParams() {
+  const pages = await getCategories()
+
+  const staticParams =
+    pages?.map(page =>  ({
+        slug: page.name,
+        categoryId: page.id,
+      })
+    ) || []
+
+  return staticParams
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = async ({
@@ -31,11 +45,11 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     modelId: searchParams.modelId,
     regionId: searchParams.regionId,
     cityId: searchParams.cityId,
-  });
+  })
 
-  const bodyTypes = await getBodyTypes();
-  const colors = await getColors();
-  const category = await getCategory(params.categoryId);
+  const bodyTypes = await getBodyTypes()
+  const colors = await getColors()
+  const category = await getCategory(params.categoryId)
 
   return (
     <>
@@ -43,7 +57,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 
       <CarsGallery products={products} bodyTypes={bodyTypes} colors={colors} />
     </>
-  );
-};
+  )
+}
 
-export default CategoryPage;
+export default CategoryPage

@@ -3,6 +3,7 @@
     "name": "CARSHUB_UA"
   },
   "baseInfo": ["category", "body type", "make", "model", "color"],
+  "mainHeroBillboardId": "1659a89a-8825-4d8c-beec-75182696b99b",
   "footer": {
     "copyRights": "© 2024, Automotive store, Inc. All Rights reserved."
   },
