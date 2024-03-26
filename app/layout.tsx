@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
-
-import { Header, Footer } from '@/layout'
+import { ClerkProvider } from '@clerk/nextjs'
 
 import { ToastProvider, ModalProvider } from '@/providers'
+
+import meta from '@/data/meta'
 
 import './globals.css'
 
 const font = Urbanist({ subsets: ['latin'] })
-
-import meta from '@/data/meta'
 
 export const metadata: Metadata = meta
 
@@ -19,18 +18,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={font.className}>
-        <ModalProvider />
-
-        <ToastProvider />
-
-        <Header />
-
-        <main>{children}</main>
-
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="scroll-smooth">
+        <body className={font.className}>
+          <ToastProvider />
+          <ModalProvider />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
