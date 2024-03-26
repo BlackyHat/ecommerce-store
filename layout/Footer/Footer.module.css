@@ -1,0 +1,3 @@
+.delimeter:after {
+  @apply absolute -right-2 top-1/2 h-1/2 w-[1px] -translate-y-1/2 bg-input content-[''];
+}
