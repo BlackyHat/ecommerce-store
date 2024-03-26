@@ -85,3 +85,10 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.delimeter {
+  @apply relative;
+}
+.delimeter:after {
+  @apply absolute inset-x-0 bottom-0 h-[1px] bg-input content-[''];
+}

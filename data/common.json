@@ -21,8 +21,35 @@
   ],
   "baseInfo": ["category", "body type", "make", "model", "color"],
   "mainHeroBillboardId": "1659a89a-8825-4d8c-beec-75182696b99b",
+  "contactLinks": {
+    "title": "Contact Info",
+    "email": {
+      "path": "info@carshub.com"
+    },
+    "telegram": {
+      "path": "https://t.me/@carshub.com",
+      "label": "Cooperation telegram"
+    }
+  },
+  "socialLinks": {
+    "title": "We are in social media",
+    "ariaLabel": "Contact us in",
+    "links": [
+      { "title": "Facebook", "link": "https://www.facebook.com/" },
+      { "title": "Instagram", "link": "https://www.instagram.com/" },
+      { "title": "Linkedin", "link": "https://www.linkedin.com" }
+    ]
+  },
   "footer": {
-    "copyRights": "© 2024, Automotive store, Inc. All Rights reserved."
+    "copyrights": "© 2024, Automotive store, Inc. All Rights reserved.",
+    "terms": {
+      "label": "Terms & Conditions",
+      "href": "/"
+    },
+    "policy": {
+      "label": "Privacy Policy",
+      "href": "/"
+    }
   },
   "buttons": {
     "uploadImages": { "label": "Upload an Image" },

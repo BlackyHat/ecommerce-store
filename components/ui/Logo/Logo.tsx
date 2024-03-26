@@ -6,9 +6,14 @@ import content from '@/data/common.json'
 
 import LogoIcon from '@/public/icons/logo-wheel.svg'
 
-export const Logo: React.FC = () => {
+export const Logo: React.FC<React.HTMLProps<HTMLLinkElement>> = ({
+  className,
+}) => {
   return (
-    <Link href="/" className={cn('relative flex items-center gap-x-1 lg:ml-0')}>
+    <Link
+      href="/"
+      className={cn('relative flex items-center gap-x-1 lg:ml-0', className)}
+    >
       <LogoIcon className="size-16 pt-3" />
 
       <p className="text-xl font-bold">{content.company.name}</p>
