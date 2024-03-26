@@ -1,1 +1,1 @@
-export * from "./FormProductSelect";
+export * from './FormProductSelect'

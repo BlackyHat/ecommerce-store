@@ -1,6 +1,6 @@
-import { Billboard } from "@/components/base";
+import { Billboard } from '@/components/base'
 
-import { BillboardProps } from "@/types";
+import { BillboardProps } from '@/types'
 
 export const Hero: React.FC<BillboardProps> = ({ data }) => {
   return (
@@ -9,5 +9,5 @@ export const Hero: React.FC<BillboardProps> = ({ data }) => {
         <Billboard data={data} />
       </div>
     </section>
-  );
-};
+  )
+}

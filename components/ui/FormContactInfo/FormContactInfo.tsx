@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { useFormContext } from "react-hook-form";
-import { PatternFormat } from "react-number-format";
+import { useFormContext } from 'react-hook-form'
+import { PatternFormat } from 'react-number-format'
 
 import {
   Heading,
@@ -11,17 +11,17 @@ import {
   FormMessage,
   FormItem,
   Input,
-} from "@/components/ui";
+} from '@/components/ui'
 
-import content from "@/data/car-form.json";
+import content from '@/data/car-form.json'
 
-import { FormContactInfoProps } from "./types";
+import { FormContactInfoProps } from './types'
 
 export const FormContactInfo: React.FC<FormContactInfoProps> = ({
   loading,
 }) => {
-  const { control } = useFormContext();
-  const { title, desc, input } = content.form.contactInfo;
+  const { control } = useFormContext()
+  const { title, desc, input } = content.form.contactInfo
 
   return (
     <>
@@ -41,7 +41,7 @@ export const FormContactInfo: React.FC<FormContactInfoProps> = ({
                   mask="_"
                   customInput={Input}
                   value={field.value}
-                  onValueChange={(values) =>
+                  onValueChange={values =>
                     field.onChange(values.formattedValue)
                   }
                 />
@@ -52,5 +52,5 @@ export const FormContactInfo: React.FC<FormContactInfoProps> = ({
         />
       </div>
     </>
-  );
-};
+  )
+}

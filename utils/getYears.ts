@@ -1,9 +1,9 @@
 export const getYears = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
-  const years = [];
+  const years = []
   for (let i = currentYear; i > currentYear - 100; i--) {
-    years.push(i);
+    years.push(i)
   }
-  return years;
-};
+  return years
+}

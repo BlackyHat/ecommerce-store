@@ -1,1 +1,1 @@
-export type FormAdditionalInfoProps = { loading: boolean };
+export type FormAdditionalInfoProps = { loading: boolean }

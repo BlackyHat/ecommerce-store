@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { Tab } from "@headlessui/react";
+import Image from 'next/image'
+import { Tab } from '@headlessui/react'
 
-import { GalleryTab } from "@/components/ui";
+import { GalleryTab } from '@/components/ui'
 
-import { GalleryProps } from "./types";
+import { GalleryProps } from './types'
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
-      <div className="lg:max-w-none mx-auto mt-6 hidden w-full max-w-2xl sm:block">
+      <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
         <Tab.List className="grid grid-cols-4 gap-6">
           {images.map((image, idx) => (
             <GalleryTab key={idx} image={image} />
@@ -35,5 +35,5 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
         ))}
       </Tab.Panels>
     </Tab.Group>
-  );
-};
+  )
+}

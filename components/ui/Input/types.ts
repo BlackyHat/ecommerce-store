@@ -1,4 +1,4 @@
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  onRemove?: () => void;
+  onRemove?: () => void
 }

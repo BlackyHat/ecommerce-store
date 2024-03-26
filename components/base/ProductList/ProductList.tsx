@@ -1,6 +1,6 @@
-import { NoResults, ProductCard } from "@/components/ui";
+import { NoResults, ProductCard } from '@/components/ui'
 
-import { ProductListProps } from "./types";
+import { ProductListProps } from './types'
 
 export const ProductList: React.FC<ProductListProps> = ({ title, items }) => (
   <div className="space-y-4">
@@ -8,10 +8,10 @@ export const ProductList: React.FC<ProductListProps> = ({ title, items }) => (
 
     {items.length === 0 && <NoResults />}
 
-    <div className="lg:grid-cols-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-      {items.map((item) => (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {items.map(item => (
         <ProductCard key={item.id} data={item} />
       ))}
     </div>
   </div>
-);
+)

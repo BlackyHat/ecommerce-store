@@ -10,14 +10,18 @@ A website for the **CarsHub** website development company.
 
 - **Project name**: CarsHub
 - **Project goals**:
-- Improve Visibility: Boost search engine rankings to attract more potential buyers and partners to the platform.
+- Improve Visibility: Boost search engine rankings to attract more potential
+  buyers and partners to the platform.
 - Increase Sales: Optimize the website to sell more used cars efficiently.
-- Enhance User Experience: Improve navigation and functionality for a seamless browsing experience.
-- Generate Leads: Capture more inquiries with persuasive sales tactics and user-friendly forms.
+- Enhance User Experience: Improve navigation and functionality for a seamless
+  browsing experience.
+- Generate Leads: Capture more inquiries with persuasive sales tactics and
+  user-friendly forms.
 - **Target audience**:
   - **Age**: 18-50+
   - **Gender**: All
-- **Product scope**: Development of a multi-page website for the company, whose main field of activity is e-commerce
+- **Product scope**: Development of a multi-page website for the company, whose
+  main field of activity is e-commerce
 
 ## ⚙️ Creating the project ⚙️
 
@@ -62,9 +66,9 @@ To deploy this project, you need to perform the following steps:
 
 ## 📱 Contacts 📱
 
-Ready to answer your questions and provide additional
-information:
+Ready to answer your questions and provide additional information:
 
 - **Author**: [Oleksandr Podoliako](https://github.com/BlackyHat)
-- **Linkedin**: [http://linkedin.com/in/oleksandr-vp](http://linkedin.com/in/oleksandr-vp)
+- **Linkedin**:
+  [http://linkedin.com/in/oleksandr-vp](http://linkedin.com/in/oleksandr-vp)
 - **Telegram**: [@blackhatty](https://t.me/blackhatty)

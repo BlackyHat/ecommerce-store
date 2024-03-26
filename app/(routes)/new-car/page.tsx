@@ -1,9 +1,5 @@
-import { AddCar } from "@/sections";
+import { AddCar } from '@/sections'
 
 export default function NewCarPage() {
-  return (
-    <>
-      <AddCar />
-    </>
-  );
+  return <AddCar />
 }

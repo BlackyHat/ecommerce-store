@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod'
 
-import content from "@/data/car-form.json";
+import content from '@/data/car-form.json'
 
 import {
   FuelType,
@@ -9,9 +9,9 @@ import {
   InteriorMatherial,
   SpareTire,
   TypeOfDriveOption,
-} from "@/types";
+} from '@/types'
 
-const { validation } = content.form;
+const { validation } = content.form
 const {
   images,
   name,
@@ -35,7 +35,7 @@ const {
   vinCode,
   phoneNumber,
   price,
-} = validation;
+} = validation
 
 export const formSchema = z.object({
   //main required information
@@ -43,7 +43,7 @@ export const formSchema = z.object({
   images: z
     .object({ url: z.string() })
     .array()
-    .refine((arr) => !!arr.length, {
+    .refine(arr => !!arr.length, {
       message: images.minLength.message,
     }),
   name: z
@@ -152,4 +152,4 @@ export const formSchema = z.object({
   phone: z
     .string()
     .regex(RegExp(phoneNumber.format.reg), phoneNumber.format.message),
-});
+})

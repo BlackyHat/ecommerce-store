@@ -4,11 +4,13 @@ import { ProductList } from '@/components/base'
 import getBillboard from '@/actions/get-billboard'
 import getProducts from '@/actions/get-products'
 
+import content from '@/data/common.json'
+
 export const revalidate = false
 
 export default async function MainPage() {
+  const heroData = await getBillboard(content.mainHeroBillboardId)
   const products = await getProducts({ isFeatured: true })
-  const heroData = await getBillboard('1659a89a-8825-4d8c-beec-75182696b99b')
 
   return (
     <>

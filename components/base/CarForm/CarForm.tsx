@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import {
   useForm,
   FormProvider,
   FieldValues,
   SubmitHandler,
-} from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { NumericFormat } from "react-number-format";
-import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import { Trash } from "lucide-react";
+} from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { NumericFormat } from 'react-number-format'
+import { useParams, useRouter } from 'next/navigation'
+import axios from 'axios'
+import { Trash } from 'lucide-react'
 
 import {
   AlertModal,
@@ -30,14 +30,14 @@ import {
   Input,
   Separator,
   Textarea,
-} from "@/components/ui";
+} from '@/components/ui'
 
-import content from "@/data/car-form.json";
+import content from '@/data/car-form.json'
 
-import { formSchema } from "./schema";
+import { formSchema } from './schema'
 
-import { CarFormProps } from "./types";
-import { defaultValues } from "./default";
+import { CarFormProps } from './types'
+import { defaultValues } from './default'
 
 export const CarForm: React.FC<CarFormProps> = ({
   initialData,
@@ -47,62 +47,62 @@ export const CarForm: React.FC<CarFormProps> = ({
   colors,
   regions,
 }) => {
-  const { title, desc, popupMsg, form } = content;
-  const { formName, uploadImages, submitBtn, carDesc, carPrice } = form;
+  const { title, desc, popupMsg, form } = content
+  const { formName, uploadImages, submitBtn, carDesc, carPrice } = form
 
-  const params = useParams();
-  const router = useRouter();
+  const params = useParams()
+  const router = useRouter()
 
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const methods = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData ?? defaultValues,
-  });
+  })
 
-  const formTitle = initialData ? title.edit : title.create;
-  const formDescription = initialData ? desc.edit : desc.create;
-  const toastMessage = initialData ? popupMsg.edit : popupMsg.create;
-  const buttonLabel = initialData ? submitBtn.edit : submitBtn.create;
+  const formTitle = initialData ? title.edit : title.create
+  const formDescription = initialData ? desc.edit : desc.create
+  const toastMessage = initialData ? popupMsg.edit : popupMsg.create
+  const buttonLabel = initialData ? submitBtn.edit : submitBtn.create
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     try {
-      setLoading(true);
+      setLoading(true)
       if (initialData) {
         await axios.patch(
           `/api/${params.storeId}/products/${params.productId}`,
           data,
-        );
+        )
       } else {
-        await axios.post(`/api/${params.storeId}/products`, data);
+        await axios.post(`/api/${params.storeId}/products`, data)
       }
-      router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success(toastMessage);
+      router.refresh()
+      router.push(`/${params.storeId}/products`)
+      toast.success(toastMessage)
     } catch (error) {
-      toast.error(popupMsg.error);
+      toast.error(popupMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const onDelete = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       await axios.delete(
         `/api/stores/${params.storeId}/products/${params.productId}`,
-      );
-      router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success(popupMsg.delete);
+      )
+      router.refresh()
+      router.push(`/${params.storeId}/products`)
+      toast.success(popupMsg.delete)
     } catch (error) {
-      toast.error(popupMsg.error);
+      toast.error(popupMsg.error)
     } finally {
-      setLoading(false);
-      setOpen(false);
+      setLoading(false)
+      setOpen(false)
     }
-  };
+  }
 
   return (
     <>
@@ -143,20 +143,18 @@ export const CarForm: React.FC<CarFormProps> = ({
                 <FormControl>
                   <ImageUpload
                     disabled={loading}
-                    onTop={(url) => {
+                    onTop={url => {
                       const idx = field.value.findIndex(
                         (element: { url: string }) => element.url === url,
-                      );
+                      )
                       if (idx !== -1) {
-                        const elementToMove = field.value.splice(idx, 1)[0];
-                        field.value.unshift(elementToMove);
-                        field.onChange([...field.value]);
+                        const elementToMove = field.value.splice(idx, 1)[0]
+                        field.value.unshift(elementToMove)
+                        field.onChange([...field.value])
                       }
                     }}
-                    onChange={(url) =>
-                      field.onChange([...field.value, { url }])
-                    }
-                    onRemove={(url) =>
+                    onChange={url => field.onChange([...field.value, { url }])}
+                    onRemove={url =>
                       field.onChange([
                         ...field.value.filter(
                           (current: { url: string }) => current.url !== url,
@@ -241,7 +239,7 @@ export const CarForm: React.FC<CarFormProps> = ({
                       placeholder={carPrice.placeholder}
                       customInput={Input}
                       value={field.value}
-                      onValueChange={(values) => field.onChange(values.value)}
+                      onValueChange={values => field.onChange(values.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -266,5 +264,5 @@ export const CarForm: React.FC<CarFormProps> = ({
         </form>
       </FormProvider>
     </>
-  );
-};
+  )
+}

@@ -5,28 +5,26 @@ import Link from 'next/link'
 
 import { cn } from '@/utils'
 
-import { MainNavProps } from './types'
+import content from '@/data/common.json'
 
-export const MainNav: React.FC<MainNavProps> = ({ data }) => {
+export const MainNav: React.FC = () => {
   const pathname = usePathname()
 
-  const routes = data
-    .sort((a, b) => b.name.localeCompare(a.name))
-    .map(route => ({
-      href: `/category/${route.id}`,
-      label: route.name,
-      active: pathname === `/category/${route.id}`,
-    }))
+  const routes = content.routes.map(route => ({
+    href: `/${route.link}`,
+    label: route.label,
+    active: pathname === `/${route.link}`,
+  }))
 
   return (
-    <nav className="lg:space-x-6 mx-6 flex items-center space-x-4">
+    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
       {routes.map(route => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-black',
-            route.active ? 'text-black' : 'text-neutral-500'
+            'text-sm font-medium capitalize leading-8 text-neutral-500 transition-colors hover:text-black',
+            { 'text-black': route.active },
           )}
         >
           {route.label}

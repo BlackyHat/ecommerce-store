@@ -1,21 +1,21 @@
-import { ShoppingCart } from "lucide-react";
+import { Star } from 'lucide-react'
 
-import { Button, Currency } from "@/components/ui";
+import { Button, Currency } from '@/components/ui'
 
-import content from "@/data/common.json";
+import content from '@/data/common.json'
 
-import { InfoProps } from "./types";
+import { InfoProps } from './types'
 
 export const Info: React.FC<InfoProps> = ({ data }) => {
-  const { button, props } = content.infoSection;
+  const { button, props } = content.infoSection
 
   const labels: Record<string, string | undefined> = {
     Category: data.category.name,
-    "Body Type": data.bodyType.label,
+    'Body Type': data.bodyType.label,
     Make: data.make.label,
     Model: data.model.label,
     Color: data.color.name,
-  };
+  }
 
   return (
     <div>
@@ -30,7 +30,7 @@ export const Info: React.FC<InfoProps> = ({ data }) => {
       <hr className="my-4" />
 
       <ul className="flex flex-col gap-y-6">
-        {props.map((prop) => (
+        {props.map(prop => (
           <li key={prop} className="flex items-center gap-x-4">
             <h3 className="font-semibold capitalize text-black">{prop}:</h3>
 
@@ -41,9 +41,9 @@ export const Info: React.FC<InfoProps> = ({ data }) => {
 
       <div className="mt-10 flex items-center gap-x-3">
         <Button className="flex items-center gap-x-2">
-          {button.label} <ShoppingCart />
+          {button.label} <Star />
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}

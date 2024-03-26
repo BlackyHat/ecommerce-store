@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-import { NumericFormat } from "react-number-format";
+import { useEffect, useState } from 'react'
+import { useFormContext } from 'react-hook-form'
+import { NumericFormat } from 'react-number-format'
 
-import { FormSelectYear } from "../FormSelectYear";
-import { FormSelectNested } from "../FormSelectNested";
+import { FormSelectYear } from '../FormSelectYear'
+import { FormSelectNested } from '../FormSelectNested'
 
 import {
   Heading,
@@ -16,10 +16,10 @@ import {
   FormMessage,
   FormItem,
   Input,
-} from "@/components/ui";
+} from '@/components/ui'
 
-import content from "@/data/car-form.json";
-import { enumValues } from "@/utils/enumValues";
+import content from '@/data/car-form.json'
+import { enumValues } from '@/utils/enumValues'
 
 import {
   City,
@@ -30,9 +30,9 @@ import {
   Model,
   SpareTire,
   TypeOfDriveOption,
-} from "@/types";
+} from '@/types'
 
-import { ProductFormProps } from "./types";
+import { ProductFormProps } from './types'
 
 export const FormMainInfo: React.FC<ProductFormProps> = ({
   loading,
@@ -42,75 +42,75 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
   colors,
   regions,
 }) => {
-  const { register, watch, control } = useFormContext();
-  const { title, desc, inputs, selects } = content.form.mainInfo;
-  const { userName, mileage } = inputs;
+  const { register, watch, control } = useFormContext()
+  const { title, desc, inputs, selects } = content.form.mainInfo
+  const { userName, mileage } = inputs
 
-  const [choosedModels, setChoosedModels] = useState<Model[]>([]);
-  const [choosedCity, setChoosedCity] = useState<City[]>([]);
+  const [choosedModels, setChoosedModels] = useState<Model[]>([])
+  const [choosedCity, setChoosedCity] = useState<City[]>([])
 
-  const selectedMakeId = watch("makeId");
+  const selectedMakeId = watch('makeId')
 
   useEffect(() => {
     if (selectedMakeId) {
-      const [choosedMake] = makes.filter(({ id }) => id === selectedMakeId);
-      setChoosedModels(choosedMake?.models.sort());
+      const [choosedMake] = makes.filter(({ id }) => id === selectedMakeId)
+      setChoosedModels(choosedMake?.models.sort())
     }
-  }, [selectedMakeId, makes]);
+  }, [selectedMakeId, makes])
 
-  const selectedRegionId = watch("regionId");
+  const selectedRegionId = watch('regionId')
 
   useEffect(() => {
     if (selectedRegionId) {
       const [choosedRegion] = regions.filter(
         ({ id }) => id === selectedRegionId,
-      );
-      setChoosedCity(choosedRegion?.cities);
+      )
+      setChoosedCity(choosedRegion?.cities)
     }
-  }, [selectedRegionId, regions]);
+  }, [selectedRegionId, regions])
 
   const getOptions = (name: string) => {
-    if (name === "categoryId") {
-      return categories;
+    if (name === 'categoryId') {
+      return categories
     }
-    if (name === "bodyTypeId") {
-      return bodyTypes;
+    if (name === 'bodyTypeId') {
+      return bodyTypes
     }
-    if (name === "makeId") {
-      return makes;
+    if (name === 'makeId') {
+      return makes
     }
-    if (name === "modelId") {
-      return choosedModels;
+    if (name === 'modelId') {
+      return choosedModels
     }
-    if (name === "regionId") {
-      return regions;
+    if (name === 'regionId') {
+      return regions
     }
-    if (name === "cityId") {
-      return choosedCity;
+    if (name === 'cityId') {
+      return choosedCity
     }
-    if (name === "fuel") {
-      return enumValues(FuelType);
+    if (name === 'fuel') {
+      return enumValues(FuelType)
     }
-    if (name === "gearbox") {
-      return enumValues(GearboxType);
+    if (name === 'gearbox') {
+      return enumValues(GearboxType)
     }
-    if (name === "typeOfDrive") {
-      return enumValues(TypeOfDriveOption);
+    if (name === 'typeOfDrive') {
+      return enumValues(TypeOfDriveOption)
     }
-    if (name === "colorId") {
-      return colors;
+    if (name === 'colorId') {
+      return colors
     }
-    if (name === "headlights") {
-      return enumValues(Headlights);
+    if (name === 'headlights') {
+      return enumValues(Headlights)
     }
-    if (name === "spareTire") {
-      return enumValues(SpareTire);
+    if (name === 'spareTire') {
+      return enumValues(SpareTire)
     }
-    if (name === "interiorMatherial") {
-      return enumValues(InteriorMatherial);
+    if (name === 'interiorMatherial') {
+      return enumValues(InteriorMatherial)
     }
-    return [];
-  };
+    return []
+  }
 
   return (
     <>
@@ -127,7 +127,7 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
                 <Input
                   placeholder={userName.placeholder}
                   disabled={loading}
-                  onRemove={() => field.onChange("")}
+                  onRemove={() => field.onChange('')}
                   {...register(userName.name)}
                   {...field}
                 />
@@ -137,8 +137,8 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
           )}
         />
 
-        {selects.map((select) => {
-          if (select.name === "year") {
+        {selects.map(select => {
+          if (select.name === 'year') {
             return (
               <FormSelectYear
                 key={select.id}
@@ -147,7 +147,7 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
                 placeholder={select.placeholder}
                 loading={loading}
               />
-            );
+            )
           } else if (select.nested) {
             return (
               <FormSelectNested
@@ -158,7 +158,7 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
                 placeholder={select.placeholder}
                 fieldOptions={getOptions(select.name)}
               />
-            );
+            )
           } else {
             return (
               <FormProductSelect
@@ -169,7 +169,7 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
                 placeholder={select.placeholder}
                 fieldOptions={getOptions(select.name)}
               />
-            );
+            )
           }
         })}
 
@@ -191,7 +191,7 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
                   placeholder={mileage.placeholder}
                   customInput={Input}
                   value={field.value}
-                  onValueChange={(values) => field.onChange(values.value)}
+                  onValueChange={values => field.onChange(values.value)}
                 />
               </FormControl>
               <FormMessage />
@@ -200,5 +200,5 @@ export const FormMainInfo: React.FC<ProductFormProps> = ({
         />
       </div>
     </>
-  );
-};
+  )
+}

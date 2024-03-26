@@ -2,7 +2,25 @@
   "company": {
     "name": "CARSHUB_UA"
   },
+  "routes": [
+    {
+      "label": "used cars",
+      "link": "used-cars",
+      "id": "0e08d077-ca2b-4b72-bb06-a0d129591221"
+    },
+    {
+      "label": "parts",
+      "link": "parts",
+      "id": "09963adc-68ee-454d-91db-d5a57fb5659f"
+    },
+    {
+      "label": "blog",
+      "link": "blog",
+      "id": "1e3b2258-b46c-4bd5-8e55-25564ccefbcc"
+    }
+  ],
   "baseInfo": ["category", "body type", "make", "model", "color"],
+  "mainHeroBillboardId": "1659a89a-8825-4d8c-beec-75182696b99b",
   "footer": {
     "copyRights": "© 2024, Automotive store, Inc. All Rights reserved."
   },
@@ -12,7 +30,7 @@
   },
   "popup": { "alertModal": { "cancel": "Cancel", "continue": "Continue" } },
   "infoSection": {
-    "button": { "label": "Add To Favotite" },
+    "button": { "label": "Add To Favourite" },
     "props": ["Category", "Body Type", "Make", "Model", "Color"]
   },
   "filters": { "label": "Filters" },

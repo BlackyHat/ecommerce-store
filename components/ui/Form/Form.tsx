@@ -21,7 +21,7 @@ import { FormFieldContextValue, FormItemContextValue } from './types'
 const Form = FormProvider
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
+  {} as FormFieldContextValue,
 )
 
 const FormField = <
@@ -61,7 +61,7 @@ const useFormField = () => {
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
+  {} as FormItemContextValue,
 )
 
 const FormItem = React.forwardRef<

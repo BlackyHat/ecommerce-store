@@ -1,10 +1,10 @@
-import { SelectItem } from "@/components/ui";
+import { SelectItem } from '@/components/ui'
 
-import { SelectedItemsProps } from "./types";
+import { SelectedItemsProps } from './types'
 
 export const SelectedItems: React.FC<SelectedItemsProps> = ({ options }) =>
-  options.map((option) => {
-    if (typeof option === "string") {
+  options.map(option => {
+    if (typeof option === 'string') {
       return (
         <SelectItem
           key={option}
@@ -13,12 +13,12 @@ export const SelectedItems: React.FC<SelectedItemsProps> = ({ options }) =>
         >
           {option.toLowerCase()}
         </SelectItem>
-      );
+      )
     } else {
       return (
         <SelectItem key={option.id} value={option.id} className="capitalize">
           {option.label || option.name}
         </SelectItem>
-      );
+      )
     }
-  });
+  })
