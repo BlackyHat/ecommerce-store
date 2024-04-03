@@ -47,6 +47,7 @@ export interface City {
 
 export interface Product {
   id: string
+  ownerId: string
 
   images: Image[]
   name: string

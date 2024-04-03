@@ -6,7 +6,7 @@ import getProduct from '@/actions/get-product'
 import getProducts from '@/actions/get-products'
 
 export const dynamicParams = false
-export const dynamic = 'error'
+// export const dynamic = 'error'
 export const revalidate = false
 
 export async function generateMetadata({
@@ -26,7 +26,7 @@ export async function generateMetadata({
     `${price} $`,
   ].join(', ')
 
-  const title = `Carfor sale on CarHub - ${carInfo}`
+  const title = `Car for sale on CarHub - ${carInfo}`
 
   return {
     title,
@@ -41,14 +41,12 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const pages = await getProducts({})
 
-  const staticParams =
-    pages?.map(page => {
-      return {
-        carId: page.id,
-      }
-    }) || []
+  const paths =
+    pages.map(page => ({
+      carId: page.id,
+    })) || []
 
-  return staticParams
+  return paths
 }
 
 export default async function CarPage({

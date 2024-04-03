@@ -8,20 +8,23 @@ import { Expand, Star } from 'lucide-react'
 import { Currency, IconButton } from '@/components/ui'
 
 import usePreviewModal from '@/hooks/use-preview-modal'
+import useFavorite from '@/hooks/useFavorite'
 
 import { ProductCardProps } from './types'
+import { cn } from '@/utils'
 
 export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const previewModal = usePreviewModal()
+  const favoriteCars = useFavorite()
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation()
     previewModal.onOpen(data)
   }
 
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
+  const onAddToFavorite: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation()
-    //remove this
+    favoriteCars.addItem(data)
   }
 
   return (
@@ -32,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           src={data.images?.[0]?.url}
           fill
           className="aspect-square rounded-md object-cover"
-          sizes="(max-width: 767px) 100vw, (min-width: 1280px) 33wv,  (min-width: 1280px) 29.px"
+          sizes="(max-width: 767px) 100vw, (min-width: 1280px) 33wv,  (min-width: 1280px) 290px"
         />
 
         <div className="absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100">
@@ -44,9 +47,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             />
 
             <IconButton
-              onClick={onAddToCart}
+              onClick={onAddToFavorite}
               icon={<Star size={20} />}
-              className="z-10 text-gray-600"
+              className={cn('z-10 text-gray-600', {
+                '[&>svg]:fill-gray-600': favoriteCars.isFavorite(data.id),
+              })}
             />
           </div>
         </div>

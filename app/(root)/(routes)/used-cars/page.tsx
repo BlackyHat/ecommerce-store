@@ -23,7 +23,9 @@ interface UsedCarsPageProps {
   }
 }
 
-const UsedCarsPage: React.FC<UsedCarsPageProps> = async ({ searchParams }) => {
+export default async function UsedCarsPage({
+  searchParams,
+}: UsedCarsPageProps) {
   const products = await getProducts({
     colorId: searchParams.colorId,
     bodyTypeId: searchParams.bodyTypeId,
@@ -45,5 +47,3 @@ const UsedCarsPage: React.FC<UsedCarsPageProps> = async ({ searchParams }) => {
     </>
   )
 }
-
-export default UsedCarsPage
