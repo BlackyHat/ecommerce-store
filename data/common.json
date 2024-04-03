@@ -62,5 +62,11 @@
   },
   "filters": { "label": "Filters" },
   "noResult": { "label": "No results found." },
-  "userProfile": { "title": "User Profile" }
+  "userProfile": {
+    "pageTitle": "User Profile",
+    "userPhoto": "User's photo",
+    "carsTitle": "Your cars",
+    "favsTitle": "Favourites",
+    "noFavs": "No cars added to favorite"
+  }
 }
