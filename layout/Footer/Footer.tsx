@@ -20,7 +20,7 @@ export const Footer = () => {
           <p className="text-center text-base text-black">{copyrights}</p>
 
           <ul className="relative flex items-center justify-end gap-4">
-            <li className='delimeter relative'>
+            <li className="delimeter relative">
               <a
                 href={terms.href}
                 target="_blank"

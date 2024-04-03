@@ -1,10 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import { UserButton, auth } from '@clerk/nextjs'
 import { PlusCircle, LogIn } from 'lucide-react'
 
 import content from '@/data/common.json'
 
-export const NavbarActions = () => {
+export const NavbarActions: React.FC = () => {
   const { userId } = auth()
   const { sellCar } = content.buttons
 
