@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { PlusCircle, LogIn } from 'lucide-react'
 import { UserButton, auth } from '@clerk/nextjs'
+import { PlusCircle, LogIn } from 'lucide-react'
 
 import content from '@/data/common.json'
 
@@ -10,15 +10,6 @@ export const NavbarActions = () => {
 
   return (
     <div className="ml-auto flex items-center gap-x-4">
-      <Link
-        href="/new-car"
-        className="flex h-10 items-center justify-center gap-x-2 rounded-md border border-input bg-background px-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 smOnly:truncate"
-      >
-        <PlusCircle className="size-4 text-black" />
-
-        <p className="text-sm font-medium text-black ">{sellCar.label}</p>
-      </Link>
-
       {!userId && (
         <Link
           href="/sign-in"
@@ -29,11 +20,22 @@ export const NavbarActions = () => {
       )}
 
       {userId && (
-        <UserButton
-          afterSignOutUrl="/"
-          userProfileMode="navigation"
-          userProfileUrl="/profile"
-        />
+        <>
+          <Link
+            href="/new-car"
+            className="flex h-10 items-center justify-center gap-x-2 rounded-md border border-input bg-background px-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 smOnly:truncate"
+          >
+            <PlusCircle className="size-4 text-black" />
+
+            <p className="text-sm font-medium text-black ">{sellCar.label}</p>
+          </Link>
+
+          <UserButton
+            afterSignOutUrl="/"
+            userProfileMode="navigation"
+            userProfileUrl="/profile"
+          />
+        </>
       )}
     </div>
   )
