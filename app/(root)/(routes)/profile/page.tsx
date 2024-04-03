@@ -8,7 +8,7 @@ import getProducts from '@/actions/get-products'
 
 import content from '@/data/common.json'
 
-const ProfilePage: React.FC = async () => {
+export default async function ProfilePage() {
   const { userId } = auth()
 
   if (!userId) {
@@ -55,5 +55,3 @@ const ProfilePage: React.FC = async () => {
     </>
   )
 }
-
-export default ProfilePage

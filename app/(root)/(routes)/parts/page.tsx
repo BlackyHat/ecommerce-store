@@ -9,7 +9,7 @@ import meta from '@/data/meta.json'
 
 export const metadata: Metadata = meta.usedCars
 
-const PartsPage: React.FC = async () => {
+export default async function PartsPage() {
   const category = await getCategory(content.routes[1].id)
 
   return (
@@ -26,5 +26,3 @@ const PartsPage: React.FC = async () => {
     </>
   )
 }
-
-export default PartsPage
