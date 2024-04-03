@@ -6,7 +6,7 @@ import getProduct from '@/actions/get-product'
 import getProducts from '@/actions/get-products'
 
 export const dynamicParams = false
-export const dynamic = 'error'
+// export const dynamic = 'error'
 export const revalidate = false
 
 export async function generateMetadata({
