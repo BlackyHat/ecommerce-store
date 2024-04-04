@@ -9,8 +9,7 @@ import meta from '@/data/meta.json'
 
 export const metadata: Metadata = meta.blog
 
-
-export default async function BlogPage () {
+export default async function BlogPage() {
   const category = await getCategory(content.routes[2].id)
 
   return (

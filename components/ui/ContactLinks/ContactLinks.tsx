@@ -5,7 +5,7 @@ export const ContactLinks = () => {
 
   return (
     <div>
-      <p className="delimeter mb-10 text-2xl font-medium leading-[64px]">
+      <p className="delimeter mb-4 text-xl font-medium leading-[64px] md:mb-10 md:text-2xl smOnly:text-center">
         {title}
       </p>
 

@@ -19,19 +19,18 @@ const useFavorite = create(
       isFavorite: (id: string) => {
         const currentItems = get().items
         const existingItem = currentItems.find(item => item.id === id)
-        return existingItem ? true : false
+        return !!existingItem
       },
 
       addItem: (data: Product) => {
-        const currentItems = get().items
-        const existingItem = currentItems.find(item => item.id === data.id)
+        const existingItem = get().isFavorite(data.id)
 
         if (existingItem) {
-          return toast('Item already in favorite')
+          get().removeItem(data.id)
+        } else {
+          set({ items: [...get().items, data] })
+          toast.success('Item added to favorite')
         }
-
-        set({ items: [...get().items, data] })
-        toast.success('Item added to favorite')
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter(item => item.id !== id)] })

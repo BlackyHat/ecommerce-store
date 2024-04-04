@@ -1,8 +1,7 @@
 import { authMiddleware } from '@clerk/nextjs'
 
 export default authMiddleware({
-  // publicRoutes: req => !req.url.includes('/profile'),
-  publicRoutes: ['((?!^/profile).*)'],
+  publicRoutes: ['((?!^/profile).*)', '((?!^/new-car).*)'],
 })
 
 export const config = {

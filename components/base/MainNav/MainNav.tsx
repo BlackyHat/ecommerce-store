@@ -7,7 +7,9 @@ import { cn } from '@/utils'
 
 import content from '@/data/common.json'
 
-export const MainNav: React.FC = () => {
+import { MainNavProps } from './types'
+
+export const MainNav: React.FC<MainNavProps> = ({ className }) => {
   const pathname = usePathname()
 
   const routes = content.routes.map(route => ({
@@ -17,13 +19,15 @@ export const MainNav: React.FC = () => {
   }))
 
   return (
-    <nav className="flex items-center space-x-4 lg:space-x-6">
+    <nav
+      className={cn('flex items-center md:space-x-4 lg:space-x-6', className)}
+    >
       {routes.map(route => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium capitalize leading-8 text-neutral-500 transition-colors hover:text-black',
+            'text-sm font-medium capitalize leading-8 text-neutral-500 transition-colors hover:text-black smOnly:text-left smOnly:text-xl',
             { 'text-black': route.active },
           )}
         >
