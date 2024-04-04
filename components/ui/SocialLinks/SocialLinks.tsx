@@ -4,16 +4,16 @@ import Facebook from '@/public/icons/facebook.svg'
 import Instagram from '@/public/icons/instagram.svg'
 import Linkedin from '@/public/icons/linkedin.svg'
 
-export const SocialLinks = () => {
+export const SocialLinks: React.FC = () => {
   const { title, ariaLabel, links } = content.socialLinks
 
   return (
     <div>
-      <p className="delimeter relative mb-10 text-2xl font-medium leading-[64px]">
+      <p className="delimeter relative mb-4 text-xl font-medium leading-[64px] md:mb-10 md:text-2xl smOnly:text-center">
         {title}
       </p>
 
-      <ul className="flex gap-4 smOnly:items-center">
+      <ul className="smOnly:delimeter flex gap-4 smOnly:items-center smOnly:justify-center smOnly:after:-bottom-4">
         {links.map(({ title, link }) => (
           <li key={title}>
             <a
